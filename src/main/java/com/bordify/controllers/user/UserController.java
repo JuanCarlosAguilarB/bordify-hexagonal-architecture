@@ -27,41 +27,6 @@ public class UserController {
     @Autowired
     private UserService userServices;
 
-    @Operation(summary = "Create a new user", description = "Creates a new user", tags = { "User" })
-    @PostMapping(value = "/users/")
-    public ResponseEntity<?> createUser(@RequestBody RequestUserBody requestBody) {
-        User user = User.builder()
-                .username(requestBody.getUsername())
-                .email(requestBody.getEmail())
-                .firstName(requestBody.getFirstName())
-                .lastName(requestBody.getLastName())
-                .phoneNumber(requestBody.getPhoneNumber())
-                .password(passwordEncoder.encode( requestBody.getPassword()))
-                .build();
-
-
-        String token = userServices.createUser(user).getToken();
-        String id = user.getId().toString();
-
-        ResponseUserCreateDTO responseDTO = ResponseUserCreateDTO.builder()
-                .accessToken(token)
-                .id(id)
-                .username(user.getUsername())
-                .email(user.getEmail())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .phoneNumber(user.getPhoneNumber())
-                .token(token)
-                .build();
-
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .header("Authorization", "Bearer " + token)
-                .body(responseDTO);
-
-
-    }
-
-
     @Autowired
     UserRepository userRepository;
 
