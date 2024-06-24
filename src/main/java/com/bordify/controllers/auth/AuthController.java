@@ -1,6 +1,6 @@
 package com.bordify.controllers.auth;
 
-import com.bordify.models.User;
+import com.bordify.domain.models.User;
 import com.bordify.services.JwtService;
 import com.bordify.application.UserService;
 import io.swagger.v3.oas.annotations.Operation;

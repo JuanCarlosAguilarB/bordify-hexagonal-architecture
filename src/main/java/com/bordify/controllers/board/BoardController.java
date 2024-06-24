@@ -1,9 +1,9 @@
 package com.bordify.controllers.board;
 
+import com.bordify.domain.models.User;
 import com.bordify.dtos.TopicListDTO;
 import com.bordify.exceptions.ApiExceptionResponse;
 import com.bordify.models.Board;
-import com.bordify.models.User;
 import com.bordify.services.BoardService;
 import com.bordify.services.TopicService;
 import com.bordify.application.UserService;
