@@ -1,7 +1,7 @@
 package com.bordify.service;
 
 import com.bordify.controllers.auth.AuthJwtResponse;
-import com.bordify.exceptions.UserNotFoundException;
+import com.bordify.domain.exceptions.UserNotFoundException;
 import com.bordify.infrastructure.ports.out.UserRepository;
 import com.bordify.models.User;
 import com.bordify.persistence.models.UserModelTestService;

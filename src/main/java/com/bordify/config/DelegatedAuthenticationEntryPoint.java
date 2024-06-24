@@ -1,6 +1,5 @@
 package com.bordify.config;
 
-import com.bordify.exceptions.UserNotFoundException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
