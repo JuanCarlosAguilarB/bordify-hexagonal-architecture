@@ -1,13 +1,14 @@
 package com.bordify.persistence.models;
 
-import com.bordify.models.User;
+
+import com.bordify.domain.models.User;
 
 import java.time.LocalTime;
 import java.util.UUID;
 
 public class UserModelTestService {
 
-    public static User  createValidUser() {
+    public static User createValidUser() {
 
         LocalTime currentTime = LocalTime.now();
 

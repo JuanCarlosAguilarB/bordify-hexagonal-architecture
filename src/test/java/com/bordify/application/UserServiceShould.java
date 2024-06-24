@@ -1,14 +1,15 @@
-package com.bordify.service;
+package com.bordify.application;
 
-import com.bordify.controllers.auth.AuthJwtResponse;
+
+
+
+
 import com.bordify.domain.exceptions.UserNotFoundException;
-import com.bordify.infrastructure.ports.out.UserRepository;
-import com.bordify.models.User;
+import com.bordify.domain.models.User;
+import com.bordify.domain.ports.out.UserRepository;
 import com.bordify.persistence.models.UserModelTestService;
-import com.bordify.services.JwtService;
-import com.bordify.application.UserService;
-
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +18,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
@@ -24,29 +27,22 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class UserServiceShould {
 
-    @InjectMocks
-    private UserService userService;
+    private final UserRepository userRepositoryMock = Mockito.mock(UserRepository.class);
+    private final UserService userService = new UserService(
+            userRepositoryMock
+    );
 
-    @Mock
-    private UserRepository userRepositoryMock;
-
-    @Mock
-    private JwtService jwtServiceMock;
-
-    @BeforeEach
-    public void setUp() {
-        Mockito.reset(userRepositoryMock, jwtServiceMock);
-    }
 
     @Test
     public void shouldFindUserByUsername() {
+
         // Given
         String userName = "XXXX";
         User userTest = UserModelTestService.createValidUser();
         userTest.setUsername(userName);
 
         // When
-        when(userRepositoryMock.findByUsername(userName)).thenReturn(userTest);
+        when(userRepositoryMock.findByUsername(userName)).thenReturn(Optional.of(userTest));
         User user = userService.getUserByUsername(userName);
 
         // Then
@@ -57,44 +53,23 @@ public class UserServiceShould {
 
     @Test
     public void shouldThrowUserNotFoundExceptionWhenUserNotFound() {
-        // Given
-        String userName = "XXXX";
-        when(userRepositoryMock.findByUsername(userName)).thenReturn(null);
 
-        // When/Then
+        String userName = "XXXX";
+        when(userRepositoryMock.findByUsername(userName)).thenReturn(Optional.empty());
+
         UserNotFoundException exception = assertThrows(UserNotFoundException.class, () -> {
             userService.getUserByUsername(userName);
         });
 
     }
 
-    @Test
+        @Test
     public void shouldCreateUser() {
+        // the absence of errors is what tells me that the user was created correctly
         User userTest = UserModelTestService.createValidUser();
 
-        when(userRepositoryMock.save(userTest)).thenReturn(userTest);
-
-        String token = "token";
-        String refreshToken = "refreshToken";
-
-//        when(
-//            jwtServiceMock.getRefreshToken(userTest.getUsername())
-//        ).thenReturn(refreshToken);
-
-        when(
-            jwtServiceMock.getAccessToken(userTest.getUsername()
-            )).thenReturn(token);
-
-
-        AuthJwtResponse response = userService.createUser(userTest);
-
-        // Then
+        userService.createUser(userTest);
         Mockito.verify(userRepositoryMock, Mockito.times(1)).save(userTest);
-        assertEquals(userTest.getId(), userTest.getId());
-        assertEquals(userTest.getUsername(), userTest.getUsername());
-        Assertions.assertNotNull(response.getToken());
-//        Assertions.assertNotNull(response.getRefreshToken());
-
 
 
     }
