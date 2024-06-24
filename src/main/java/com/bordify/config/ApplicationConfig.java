@@ -1,8 +1,8 @@
 package com.bordify.config;
 
+import com.bordify.infrastructure.ports.out.UserRepository;
 import com.bordify.models.User;
 import com.bordify.exceptions.UserNotFoundException;
-import com.bordify.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

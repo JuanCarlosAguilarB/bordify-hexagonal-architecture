@@ -2,7 +2,7 @@ package com.bordify.controllers.auth;
 
 import com.bordify.models.User;
 import com.bordify.services.JwtService;
-import com.bordify.services.UserService;
+import com.bordify.application.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

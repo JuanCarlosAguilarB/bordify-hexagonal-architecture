@@ -12,7 +12,7 @@ import com.bordify.persistence.models.UserModelTestService;
 import com.bordify.repositories.BoardRepository;
 import com.bordify.repositories.ColorRepository;
 import com.bordify.repositories.TopicRepository;
-import com.bordify.repositories.UserRepository;
+import com.bordify.infrastructure.ports.out.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

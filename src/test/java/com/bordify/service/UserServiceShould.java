@@ -2,14 +2,13 @@ package com.bordify.service;
 
 import com.bordify.controllers.auth.AuthJwtResponse;
 import com.bordify.exceptions.UserNotFoundException;
+import com.bordify.infrastructure.ports.out.UserRepository;
 import com.bordify.models.User;
 import com.bordify.persistence.models.UserModelTestService;
-import com.bordify.repositories.UserRepository;
 import com.bordify.services.JwtService;
-import com.bordify.services.UserService;
+import com.bordify.application.UserService;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

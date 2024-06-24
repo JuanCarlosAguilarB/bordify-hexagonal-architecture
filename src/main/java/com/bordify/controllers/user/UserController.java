@@ -1,14 +1,9 @@
 package com.bordify.controllers.user;
 
-import com.bordify.controllers.auth.ResponseDTO;
 import com.bordify.models.User;
-import com.bordify.repositories.UserRepository;
-import com.bordify.services.UserService;
+import com.bordify.infrastructure.ports.out.UserRepository;
+import com.bordify.application.UserService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

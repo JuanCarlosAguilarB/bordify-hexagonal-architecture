@@ -1,11 +1,12 @@
-package com.bordify.services;
+package com.bordify.application;
 
 import com.bordify.controllers.auth.AuthJwtResponse;
 //import com.bordify.events.CreateUserDomainEvent;
 import com.bordify.exceptions.DuplicateEmailException;
 import com.bordify.exceptions.UserNotFoundException;
+import com.bordify.infrastructure.ports.out.UserRepository;
 import com.bordify.models.User;
-import com.bordify.repositories.UserRepository;
+import com.bordify.services.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
