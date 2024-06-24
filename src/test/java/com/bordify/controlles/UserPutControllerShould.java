@@ -3,6 +3,7 @@ package com.bordify.controlles;
 
 import com.bordify.controllers.user.RequestUserBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -51,4 +52,42 @@ public class UserPutControllerShould {
 
     }
 
+    @Test
+    public void shouldNotCreateUserByDuplicatedEmail() throws Exception {
+
+        RequestUserBody requestUserBody = RequestUserBody.builder()
+                .username("testuser")
+                .email("testuser@example.com")
+                .password("testpassword")
+                .firstName("Test")
+                .lastName("User")
+                .phoneNumber("1234567890")
+                .build();
+
+
+        MvcResult result = mockMvc.perform(
+                MockMvcRequestBuilders.post("/v1/users/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestUserBody))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+        )
+                .andExpect(status().isCreated()) // we only will test your status code
+                .andReturn();
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/v1/users/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestUserBody))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+        )
+                .andExpect(status().isConflict()) // we only will test your status code
+
+                .andExpect(jsonPath("$.message",
+                        CoreMatchers.containsString(requestUserBody.getEmail())
+                ))
+                .andReturn();
+
+    }
 }
