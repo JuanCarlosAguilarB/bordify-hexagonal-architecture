@@ -20,13 +20,13 @@ import java.util.Map;
 
 @Tag(name = "User", description = "User management operations")
 @RestController
-public class PutUserController {
+public class UserPutController {
 
     private final PasswordEncoder passwordEncoder;
 
     private final UserService userServices;
 
-    public PutUserController(PasswordEncoder passwordEncoder, UserService userServices) {
+    public UserPutController(PasswordEncoder passwordEncoder, UserService userServices) {
         this.passwordEncoder = passwordEncoder;
         this.userServices = userServices;
     }
