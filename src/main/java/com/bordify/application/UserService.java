@@ -1,14 +1,13 @@
 package com.bordify.application;
 
-import com.bordify.controllers.auth.AuthJwtResponse;
-//import com.bordify.events.CreateUserDomainEvent;
-import com.bordify.exceptions.DuplicateEmailException;
-import com.bordify.exceptions.UserNotFoundException;
-import com.bordify.infrastructure.ports.out.UserRepository;
-import com.bordify.models.User;
-import com.bordify.services.JwtService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bordify.domain.models.User;
+import com.bordify.domain.ports.out.UserRepository;
+import com.bordify.domain.exceptions.DuplicateEmailException;
+import com.bordify.domain.exceptions.UserNotFoundException;
+
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 /**
@@ -17,23 +16,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private JwtService jwtService;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-//    @Autowired
-//    private RabbitService rabbitService;
 
     /**
      * Creates a new user with the provided user details and generates an authentication token.
      *
      * @param user The user object containing the user details to be created.
-     * @return An AuthJwtResponse object containing the generated authentication token.
      * @throws DuplicateEmailException If the provided email or username is already registered.
      */
-    public AuthJwtResponse createUser(User user) {
+    public void createUser(User user) {
 
         if (userRepository.existsByEmail(user.getEmail()) && userRepository.existsByUsername(user.getUsername())) {
             throw new DuplicateEmailException("Both the email " + user.getEmail() + " and username " + user.getUsername() + " are already registered. Please use different credentials.");
@@ -45,25 +41,6 @@ public class UserService {
 
         userRepository.save(user);
 
-//        CreateUserDomainEvent createUserDomainEvent = new CreateUserDomainEvent(
-//                user.getId().toString(),
-//                user.getUsername(),
-//                user.getEmail(),
-//                user.getPassword(),
-//                user.getFirstName(),
-//                user.getLastName(),
-//                user.getIsVerified(),
-//                user.getPhoneNumber(),
-//                user.getCreated(),
-//                user.getLastLogin()
-//        );
-
-//        rabbitService.publish(createUserDomainEvent);
-
-        String token = jwtService.getAccessToken(user.getUsername());
-        return AuthJwtResponse.builder()
-                .token(token)
-                .build();
     }
 
     /**
@@ -74,11 +51,12 @@ public class UserService {
      * @throws UserNotFoundException If no user is found with the specified username.
      */
     public User getUserByUsername(String username) {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UserNotFoundException("User not found");
-        }
-        return user;
+
+        Optional<User> user = userRepository.findByUsername(username);
+
+        if (user.isEmpty()) throw new UserNotFoundException("User not found");
+
+        return user.get();
     }
 
 
