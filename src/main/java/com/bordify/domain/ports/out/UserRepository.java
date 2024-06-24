@@ -2,6 +2,8 @@ package com.bordify.domain.ports.out;
 
 import com.bordify.domain.models.User;
 
+import java.util.Optional;
+
 
 /**
  * Repository interface for accessing and managing user entities in the database.
@@ -30,7 +32,7 @@ public interface UserRepository {
      * @param username The username of the user.
      * @return The user with the specified username, or null if not found.
      */
-    public User findByUsername(String username);
+    public Optional<User> findByUsername(String username);
 
     /**
      * Retrieves a user by their email address.
@@ -38,5 +40,13 @@ public interface UserRepository {
      * @param email The email address of the user.
      * @return The user with the specified email address, or null if not found.
      */
-    public User findByEmail(String email);
+    public Optional<User> findByEmail(String email);
+
+    /**
+     * Saves a user entity to the database.
+     *
+     * @param user The user entity to be saved.
+     */
+    public void save(User user);
+
 }
