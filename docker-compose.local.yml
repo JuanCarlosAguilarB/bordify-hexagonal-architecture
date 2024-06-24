@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  springboot-app:
+    build:
+      context: ./docker/local
+      dockerfile: Dockerfile
+    image: springboot-app:latest
+    container_name: springboot-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - /app/target
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
