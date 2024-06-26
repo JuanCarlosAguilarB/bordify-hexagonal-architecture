@@ -6,7 +6,7 @@ import com.bordify.exceptions.ApiExceptionResponse;
 import com.bordify.models.Board;
 import com.bordify.services.BoardService;
 import com.bordify.services.TopicService;
-import com.bordify.application.UserService;
+import com.bordify.users.application.create.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 

@@ -4,6 +4,7 @@ package com.bordify.application;
 
 
 
+import com.bordify.users.application.create.UserService;
 import com.bordify.users.domain.UserNotFoundException;
 import com.bordify.users.domain.User;
 import com.bordify.users.domain.UserRepository;

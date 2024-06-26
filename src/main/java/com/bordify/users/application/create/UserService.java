@@ -1,4 +1,4 @@
-package com.bordify.application;
+package com.bordify.users.application.create;
 
 import com.bordify.users.domain.User;
 import com.bordify.users.domain.UserRepository;
