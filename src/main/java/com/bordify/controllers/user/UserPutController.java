@@ -2,7 +2,7 @@ package com.bordify.controllers.user;
 
 import com.bordify.application.UserService;
 
-import com.bordify.domain.models.User;
+import com.bordify.users.domain.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 

@@ -1,6 +1,4 @@
-package com.bordify.domain.ports.out;
-
-import com.bordify.domain.models.User;
+package com.bordify.users.domain;
 
 import java.util.Optional;
 

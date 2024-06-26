@@ -1,7 +1,7 @@
 package com.bordify.infrastructure.adapters.out;
 
-import com.bordify.domain.models.User;
-import com.bordify.domain.ports.out.UserRepository;
+import com.bordify.users.domain.User;
+import com.bordify.users.domain.UserRepository;
 import com.bordify.infrastructure.entities.UserEntity;
 import com.bordify.infrastructure.mapper.UserMapper;
 import org.springframework.stereotype.Repository;

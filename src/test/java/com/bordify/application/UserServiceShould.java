@@ -4,17 +4,12 @@ package com.bordify.application;
 
 
 
-import com.bordify.domain.exceptions.UserNotFoundException;
-import com.bordify.domain.models.User;
-import com.bordify.domain.ports.out.UserRepository;
+import com.bordify.users.domain.UserNotFoundException;
+import com.bordify.users.domain.User;
+import com.bordify.users.domain.UserRepository;
 import com.bordify.persistence.models.UserModelTestService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 

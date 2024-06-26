@@ -1,8 +1,8 @@
 package com.bordify.exceptions;
 
 
-import com.bordify.domain.exceptions.DuplicateEmailException;
-import com.bordify.domain.exceptions.UserNotFoundException;
+import com.bordify.users.domain.DuplicateEmailException;
+import com.bordify.users.domain.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

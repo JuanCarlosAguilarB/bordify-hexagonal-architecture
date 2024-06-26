@@ -1,6 +1,6 @@
 package com.bordify.controllers.board;
 
-import com.bordify.domain.models.User;
+import com.bordify.users.domain.User;
 import com.bordify.dtos.TopicListDTO;
 import com.bordify.exceptions.ApiExceptionResponse;
 import com.bordify.models.Board;

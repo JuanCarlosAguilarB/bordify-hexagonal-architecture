@@ -1,4 +1,4 @@
-package com.bordify.domain.exceptions;
+package com.bordify.users.domain;
 
 
 /**

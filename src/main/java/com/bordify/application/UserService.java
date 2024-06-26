@@ -1,9 +1,9 @@
 package com.bordify.application;
 
-import com.bordify.domain.models.User;
-import com.bordify.domain.ports.out.UserRepository;
-import com.bordify.domain.exceptions.DuplicateEmailException;
-import com.bordify.domain.exceptions.UserNotFoundException;
+import com.bordify.users.domain.User;
+import com.bordify.users.domain.UserRepository;
+import com.bordify.users.domain.DuplicateEmailException;
+import com.bordify.users.domain.UserNotFoundException;
 
 import org.springframework.stereotype.Service;
 

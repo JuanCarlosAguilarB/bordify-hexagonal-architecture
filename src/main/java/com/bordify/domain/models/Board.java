@@ -1,8 +1,8 @@
 package com.bordify.domain.models;
 
+import com.bordify.users.domain.User;
 import lombok.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -13,6 +13,6 @@ public class Board {
     private UUID        id;
     private String      name;
     private UUID        userId;
-    private User        user;
+    private User user;
 
 }

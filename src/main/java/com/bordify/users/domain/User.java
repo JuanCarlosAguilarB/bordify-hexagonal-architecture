@@ -1,4 +1,4 @@
-package com.bordify.domain.models;
+package com.bordify.users.domain;
 
 import lombok.*;
 import java.time.LocalTime;
