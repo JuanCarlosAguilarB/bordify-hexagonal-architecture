@@ -1,4 +1,4 @@
-package com.bordify.infrastructure.entities;
+package com.bordify.users.infrastructure.persistence;
 
 import jakarta.persistence.*;
 import lombok.*;

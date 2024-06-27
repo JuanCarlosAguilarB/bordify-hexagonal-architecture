@@ -1,9 +1,8 @@
-package com.bordify.infrastructure.adapters.out;
+package com.bordify.users.infrastructure.persistence;
 
 import com.bordify.users.domain.User;
 import com.bordify.users.domain.UserRepository;
-import com.bordify.infrastructure.entities.UserEntity;
-import com.bordify.infrastructure.mapper.UserMapper;
+import com.bordify.users.infrastructure.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

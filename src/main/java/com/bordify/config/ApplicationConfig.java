@@ -1,6 +1,6 @@
 package com.bordify.config;
 
-import com.bordify.infrastructure.ports.out.UserRepository;
+import com.bordify.users.infrastructure.ports.out.UserRepository;
 import com.bordify.models.User;
 import com.bordify.users.domain.UserNotFoundException;
 import lombok.RequiredArgsConstructor;

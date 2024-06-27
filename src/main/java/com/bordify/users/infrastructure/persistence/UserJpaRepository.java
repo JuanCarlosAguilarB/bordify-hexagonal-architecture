@@ -1,6 +1,4 @@
-package com.bordify.infrastructure.adapters.out;
-
-import com.bordify.infrastructure.entities.UserEntity;
+package com.bordify.users.infrastructure.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

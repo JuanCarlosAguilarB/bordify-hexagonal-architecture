@@ -1,7 +1,7 @@
-package com.bordify.infrastructure.mapper;
+package com.bordify.users.infrastructure.mapper;
 
 import com.bordify.users.domain.User;
-import com.bordify.infrastructure.entities.UserEntity;
+import com.bordify.users.infrastructure.persistence.UserEntity;
 
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.bordify.controllers.user;
 
 import com.bordify.models.User;
-import com.bordify.infrastructure.ports.out.UserRepository;
+import com.bordify.users.infrastructure.ports.out.UserRepository;
 import com.bordify.users.application.create.UserCreator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

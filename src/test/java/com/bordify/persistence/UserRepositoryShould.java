@@ -1,5 +1,5 @@
 package com.bordify.persistence;
-import com.bordify.infrastructure.ports.out.UserRepository;
+import com.bordify.users.infrastructure.ports.out.UserRepository;
 import com.bordify.models.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

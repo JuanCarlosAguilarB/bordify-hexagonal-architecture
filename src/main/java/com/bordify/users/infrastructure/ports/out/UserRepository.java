@@ -1,4 +1,4 @@
-package com.bordify.infrastructure.ports.out;
+package com.bordify.users.infrastructure.ports.out;
 
 import com.bordify.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
