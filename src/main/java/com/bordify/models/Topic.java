@@ -1,5 +1,6 @@
 package com.bordify.models;
 
+import com.bordify.board.infrastructure.persistence.BoardEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -39,20 +40,20 @@ public class Topic {
     private Integer colorId;
 
     /**
-     * The ID of the board associated with this topic. This field is used for database operations but is
+     * The ID of the boardEntity associated with this topic. This field is used for database operations but is
      * not directly updatable or insertable through the Topic entity to prevent inconsistency.
      */
     @Column(name = "board_id")
     private UUID boardId;
 
     /**
-     * The Board entity associated with this topic. Mapped using a many-to-one relationship where each topic
-     * belongs to a single board. The @JoinColumn annotation specifies that this entity uses the 'board_id'
-     * column in the Topic table to join to the Board table.
+     * The BoardEntity entity associated with this topic. Mapped using a many-to-one relationship where each topic
+     * belongs to a single boardEntity. The @JoinColumn annotation specifies that this entity uses the 'board_id'
+     * column in the Topic table to join to the BoardEntity table.
      */
     @ManyToOne
     @JoinColumn(name = "board_id", insertable = false, updatable = false)
-    private Board board;
+    private BoardEntity boardEntity;
 
     /**
      * The Color entity associated with this topic. Mapped using a many-to-one relationship where each topic

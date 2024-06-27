@@ -2,10 +2,10 @@ package com.bordify.board.application;
 
 
 import com.bordify.board.domain.BoardListDTO;
+import com.bordify.board.infrastructure.persistence.BoardEntity;
 import com.bordify.board.infrastructure.persistence.BoardJpaRepository;
 import com.bordify.exceptions.EntityNotFound;
 import com.bordify.exceptions.ResourceNotCreatedException;
-import com.bordify.models.Board;
 import com.bordify.utils.UpdateFieldsOfClasses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,7 +31,7 @@ public class BoardService {
      * @param board The board entity to be saved.
      * @throws ResourceNotCreatedException if the board cannot be created.
      */
-    public void createBoard(Board board) {
+    public void createBoard(BoardEntity board) {
         try {
             boardRepository.save(board);
         } catch (Exception e) {
@@ -70,16 +70,16 @@ public class BoardService {
      * @return The updated board entity with selective information.
      * @throws EntityNotFound if the board to update does not exist.
      */
-    public Board update(Board board) {
+    public BoardEntity update(BoardEntity board) {
         ensureBoardExist(board);
 
-        Board boardToUpdate = boardRepository.findById(board.getId()).get();
+        BoardEntity boardToUpdate = boardRepository.findById(board.getId()).get();
 
         UpdateFieldsOfClasses.updateFields(boardToUpdate, board);
 
         boardRepository.save(boardToUpdate);
 
-        return Board.builder()
+        return BoardEntity.builder()
                 .id(boardToUpdate.getId())
                 .name(boardToUpdate.getName())
                 .build();
@@ -91,8 +91,8 @@ public class BoardService {
      * @param board The board to check existence for.
      * @throws EntityNotFound if the board does not exist.
      */
-    public void ensureBoardExist(Board board) {
-        if (!boardRepository.existsById(board.getId())) {
+    public void ensureBoardExist(BoardEntity boardEntity) {
+        if (!boardRepository.existsById(boardEntity.getId())) {
             throw new EntityNotFound("Board not found");
         }
     }
@@ -106,7 +106,7 @@ public class BoardService {
      * @throws EntityNotFound if the board with the specified ID does not exist.
      */
     public Boolean isUserOwnerOfBoard(UUID boardId, UUID userId) {
-        Optional<Board> board = Optional.ofNullable(boardRepository.findById(boardId)
+        Optional<BoardEntity> board = Optional.ofNullable(boardRepository.findById(boardId)
                 .orElseThrow(() -> new EntityNotFound("Board not found")));
         return board.get().getUserId().equals(userId);
     }

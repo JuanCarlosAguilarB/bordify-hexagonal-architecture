@@ -1,10 +1,10 @@
 package com.bordify.board.infrastructure.controllers;
 
+import com.bordify.board.infrastructure.persistence.BoardEntity;
 import com.bordify.users.application.find.UserFinder;
 import com.bordify.users.domain.User;
 import com.bordify.dtos.TopicListDTO;
 import com.bordify.exceptions.ApiExceptionResponse;
-import com.bordify.models.Board;
 import com.bordify.board.application.BoardService;
 import com.bordify.services.TopicService;
 import com.bordify.users.application.create.UserCreator;
@@ -53,29 +53,29 @@ public class BoardController {
 //                    @Content(mediaType = "application/json", schema = @Schema(implementation = com.bordify.controllers.CreateBoardResponse.class)) }),
 //    })
     @PostMapping("/boards/")
-    public ResponseEntity<Board> createBoard(
+    public ResponseEntity<BoardEntity> createBoard(
             @RequestBody BoardRequest boardRequest, Authentication auth) {
 
         // Extract userId of token
         String username = auth.getName();
         UUID userId = userFinder.findUserByUsername(username).getId();
 
-        Board board = Board.builder()
+        BoardEntity boardEntity = BoardEntity.builder()
                 .name(boardRequest.getName())
                 .userId(userId)
                 .build();
 
 
         boardService.createBoard(
-                board
+                boardEntity
         );
 
-        Board createBoardResponse = Board.builder()
-                .name(board.getName())
-                .id(board.getId())
+        BoardEntity createBoardEntityResponse = BoardEntity.builder()
+                .name(boardEntity.getName())
+                .id(boardEntity.getId())
                 .build();
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(createBoardResponse);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createBoardEntityResponse);
     }
 
     /**
@@ -161,14 +161,14 @@ public class BoardController {
     @PatchMapping("/boards/{id}/")
     public ResponseEntity<?> handler(@PathVariable UUID id, @RequestBody BoardRequest boardRequest) {
 
-        Board board = new Board().builder()
+        BoardEntity boardEntity = new BoardEntity().builder()
                 .id(id)
                 .name(boardRequest.getName())
                 .build();
 
-        Board boardUpdated = boardService.update(board);
+        BoardEntity boardEntityUpdated = boardService.update(boardEntity);
 
-        return ResponseEntity.ok(boardUpdated);
+        return ResponseEntity.ok(boardEntityUpdated);
     }
 
 
@@ -182,14 +182,14 @@ public class BoardController {
     @PutMapping("/boards/{id}/")
     public ResponseEntity<?> updateBoard(@PathVariable UUID id, @RequestBody BoardRequest boardRequest) {
 
-        Board board = new Board().builder()
+        BoardEntity boardEntity = new BoardEntity().builder()
                 .id(id)
                 .name(boardRequest.getName())
                 .build();
 
-        Board boardUpdated = boardService.update(board);
+        BoardEntity boardEntityUpdated = boardService.update(boardEntity);
 
-        return ResponseEntity.ok(boardUpdated);
+        return ResponseEntity.ok(boardEntityUpdated);
     }
 
 }

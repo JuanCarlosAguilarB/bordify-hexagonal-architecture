@@ -1,7 +1,6 @@
 package com.bordify.board.infrastructure.persistence;
 
 import com.bordify.board.domain.BoardListDTO;
-import com.bordify.models.Board;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,47 +8,47 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 /**
- * Repository interface for accessing and managing board entities in the database.
+ * Repository interface for accessing and managing boardEntity entities in the database.
  */
-public interface BoardJpaRepository extends JpaRepository<Board, UUID> {
+public interface BoardJpaRepository extends JpaRepository<BoardEntity, UUID> {
 
     /**
-     * Deletes a board by its ID.
+     * Deletes a boardEntity by its ID.
      *
-     * @param boardId The ID of the board to delete.
+     * @param boardId The ID of the boardEntity to delete.
      */
     public void deleteById(UUID boardId);
 
     /**
-     * Checks if a board exists by its ID.
+     * Checks if a boardEntity exists by its ID.
      *
-     * @param boardId The ID of the board to check.
-     * @return True if the board exists, false otherwise.
+     * @param boardId The ID of the boardEntity to check.
+     * @return True if the boardEntity exists, false otherwise.
      */
     public boolean existsById(UUID boardId);
 
     /**
-     * Retrieves a page of board DTOs.
+     * Retrieves a page of boardEntity DTOs.
      *
      * @param pageable The pagination information.
-     * @return A page of board DTOs.
+     * @return A page of boardEntity DTOs.
      */
     public Page<BoardListDTO> findBy(Pageable pageable);
 
     /**
-     * Retrieves a page of board DTOs filtered by user ID.
+     * Retrieves a page of boardEntity DTOs filtered by user ID.
      *
      * @param pageable The pagination information.
      * @param userId The ID of the user.
-     * @return A page of board DTOs filtered by user ID.
+     * @return A page of boardEntity DTOs filtered by user ID.
      */
     public Page<BoardListDTO> findByUserId(Pageable pageable, UUID userId);
 
     /**
-     * Finds a board DTO by its ID.
+     * Finds a boardEntity DTO by its ID.
      *
-     * @param boardId The ID of the board.
-     * @return The board DTO.
+     * @param boardId The ID of the boardEntity.
+     * @return The boardEntity DTO.
      */
-    public Board findDtoById(UUID boardId);
+    public BoardEntity findDtoById(UUID boardId);
 }

@@ -16,11 +16,11 @@ import java.util.UUID;
 public interface TopicRepository extends JpaRepository<Topic, UUID> {
 
     /**
-     * Retrieves a list of topic DTOs by board ID with custom projection and pagination.
+     * Retrieves a list of topic DTOs by boardEntity ID with custom projection and pagination.
      *
-     * @param boardId The ID of the board.
+     * @param boardId The ID of the boardEntity.
      * @param pageable The pagination information.
-     * @return A list of topic DTOs associated with the specified board ID.
+     * @return A list of topic DTOs associated with the specified boardEntity ID.
      */
     @Query("SELECT new com.bordify.dtos.TopicListDTO(t.id, t.name, c) FROM Topic t LEFT JOIN t.color c WHERE t.boardId = :boardId")
     List<TopicListDTO> findByBoardIdCustom(UUID boardId, Pageable pageable);

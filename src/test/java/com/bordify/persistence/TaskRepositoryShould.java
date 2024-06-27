@@ -1,6 +1,7 @@
 package com.bordify.persistence;
 
 
+import com.bordify.board.infrastructure.persistence.BoardEntity;
 import com.bordify.dtos.TaskListDTO;
 import com.bordify.infrastructure.ports.out.UserRepository;
 import com.bordify.models.*;
@@ -37,13 +38,13 @@ public class TaskRepositoryShould {
         User userTest = UserModelTestService.createValidUser();
         userRepository.save(userTest);
 
-        Board boardTest = BoardModelTestService.createValidBoard(userTest);
-        boardRepository.save(boardTest);
+        BoardEntity boardEntityTest = BoardModelTestService.createValidBoard(userTest);
+        boardRepository.save(boardEntityTest);
 
         Color colorTest = ColorModelTestService.createValidColor();
         colorRepository.save(colorTest);
 
-        Topic topicTest = TopicModelTestService.createValidTopic(colorTest, boardTest);
+        Topic topicTest = TopicModelTestService.createValidTopic(colorTest, boardEntityTest);
         topicRepository.save(topicTest);
 
 
@@ -64,13 +65,13 @@ public class TaskRepositoryShould {
         User userTest = UserModelTestService.createValidUser();
         userRepository.save(userTest);
 
-        Board boardTest = BoardModelTestService.createValidBoard(userTest);
-        boardRepository.save(boardTest);
+        BoardEntity boardEntityTest = BoardModelTestService.createValidBoard(userTest);
+        boardRepository.save(boardEntityTest);
 
         Color colorTest = ColorModelTestService.createValidColor();
         colorRepository.save(colorTest);
 
-        Topic topicTest = TopicModelTestService.createValidTopic(colorTest, boardTest);
+        Topic topicTest = TopicModelTestService.createValidTopic(colorTest, boardEntityTest);
         topicRepository.save(topicTest);
 
         List<Task> listTaskTopic =  TaskModelTestService.createValidListTask(topicTest, 5);

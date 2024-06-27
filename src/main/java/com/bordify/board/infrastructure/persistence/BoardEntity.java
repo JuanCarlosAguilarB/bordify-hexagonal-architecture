@@ -1,5 +1,7 @@
-package com.bordify.models;
+package com.bordify.board.infrastructure.persistence;
 
+import com.bordify.models.Topic;
+import com.bordify.models.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,21 +12,22 @@ import java.util.UUID;
  * Represents a board entity in the Bordify application. A board is a collection
  * of topics and is associated with a user.
  *
- * The Board class leverages Lombok to automate the creation of getter, setter,
+ * The BoardEntity class leverages Lombok to automate the creation of getter, setter,
  * toString, equals, and hashCode methods with the @Data annotation. It uses
  * @NoArgsConstructor and @AllArgsConstructor to generate constructors without and
  * with all parameters, respectively. @Builder provides a fluent API for building
- * Board instances.
+ * BoardEntity instances.
  */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Board {
+@Table(name = "board")
+public class BoardEntity {
 
     /**
-     * Unique identifier for the Board. It is automatically generated and uses
+     * Unique identifier for the BoardEntity. It is automatically generated and uses
      * UUID as the ID type.
      */
     @Id

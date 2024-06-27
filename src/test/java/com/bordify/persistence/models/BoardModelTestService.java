@@ -1,6 +1,6 @@
 package com.bordify.persistence.models;
 
-import com.bordify.models.Board;
+import com.bordify.board.infrastructure.persistence.BoardEntity;
 
 import com.bordify.models.User;
 
@@ -8,14 +8,14 @@ import java.util.UUID;
 
 public class BoardModelTestService  {
 
-    public static Board createValidBoard(User user) {
+    public static BoardEntity createValidBoard(User user) {
 
 //        User user = UserModelTestService.createValidUser();
         UUID userId = user.getId();
 
-        return Board.builder()
+        return BoardEntity.builder()
                 .id(UUID.randomUUID())
-                .name("Test Board")
+                .name("Test BoardEntity")
                 .user(user)
                 .userId(userId)
                 .build();
