@@ -1,4 +1,4 @@
-package com.bordify.controllers.user;
+package com.bordify.users.infrastructure.controllers;
 
 import lombok.Builder;
 import lombok.Data;

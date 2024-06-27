@@ -1,4 +1,4 @@
-package com.bordify.controllers.user;
+package com.bordify.users.infrastructure.controllers;
 
 import com.bordify.exceptions.InvalidRequestArgumentException;
 import com.bordify.utils.EmailValidator;

@@ -1,4 +1,4 @@
-package com.bordify.controllers.user;
+package com.bordify.users.infrastructure.controllers;
 
 import com.bordify.models.User;
 import com.bordify.users.infrastructure.ports.out.UserRepository;

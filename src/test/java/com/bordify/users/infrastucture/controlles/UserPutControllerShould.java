@@ -1,7 +1,7 @@
 package com.bordify.users.infrastucture.controlles;
 
 
-import com.bordify.controllers.user.RequestUserBody;
+import com.bordify.users.infrastructure.controllers.RequestUserBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
