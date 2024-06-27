@@ -43,21 +43,4 @@ public class UserCreator {
 
     }
 
-    /**
-     * Retrieves a user by the specified username.
-     *
-     * @param username The username of the user to retrieve.
-     * @return The User object corresponding to the specified username.
-     * @throws UserNotFoundException If no user is found with the specified username.
-     */
-    public User getUserByUsername(String username) {
-
-        Optional<User> user = userRepository.findByUsername(username);
-
-        if (user.isEmpty()) throw new UserNotFoundException("User not found");
-
-        return user.get();
-    }
-
-
 }

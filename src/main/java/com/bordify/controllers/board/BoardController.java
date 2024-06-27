@@ -1,5 +1,6 @@
 package com.bordify.controllers.board;
 
+import com.bordify.users.application.find.UserFinder;
 import com.bordify.users.domain.User;
 import com.bordify.dtos.TopicListDTO;
 import com.bordify.exceptions.ApiExceptionResponse;
@@ -36,6 +37,8 @@ public class BoardController {
     @Autowired
     private TopicService topicService;
 
+    @Autowired
+    private UserFinder userFinder;
 
     /**
      * Creates a new board for the authenticated user.
@@ -55,7 +58,7 @@ public class BoardController {
 
         // Extract userId of token
         String username = auth.getName();
-        UUID userId = userCreator.getUserByUsername(username).getId();
+        UUID userId = userFinder.findUserByUsername(username).getId();
 
         Board board = Board.builder()
                 .name(boardRequest.getName())
@@ -109,7 +112,7 @@ public class BoardController {
 
         // verify that owner of the board is the one requesting the topics
         String username = auth.getName();
-        User user = userCreator.getUserByUsername(username);
+        User user = userFinder.findUserByUsername(username);
 
         boolean isUserOwnerOfBoard = boardService.isUserOwnerOfBoard(boardId, user.getId());
 
@@ -143,7 +146,7 @@ public class BoardController {
 
         String username = auth.getName();
 
-        User user = userCreator.getUserByUsername(username);
+        User user = userFinder.findUserByUsername(username);
 
         return ResponseEntity.ok(boardService.listBoards(pageable, user.getId()));
     }

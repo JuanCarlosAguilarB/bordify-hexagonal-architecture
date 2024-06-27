@@ -1,5 +1,6 @@
 package com.bordify.controllers.auth;
 
+import com.bordify.users.application.find.UserFinder;
 import com.bordify.users.domain.User;
 import com.bordify.services.JwtService;
 import com.bordify.users.application.create.UserCreator;
@@ -31,6 +32,8 @@ public class AuthController {
     @Autowired
     private UserCreator userCreator;
 
+    @Autowired
+    private UserFinder  userFinder;
     /**
      * Authenticates a user and returns a JWT token.
      *
@@ -53,7 +56,7 @@ public class AuthController {
         );
 
 
-        User user = userCreator.getUserByUsername(username);
+        User user = userFinder.findUserByUsername(username);
         String id = user.getId().toString();
 
         String token = jwtService.getAccessToken(username);
