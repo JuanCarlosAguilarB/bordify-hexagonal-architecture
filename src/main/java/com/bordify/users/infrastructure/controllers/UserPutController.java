@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,12 +22,15 @@ import java.util.Map;
 @RestController
 public class UserPutController {
 
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
 
     private final UserCreator userCreatorServices;
 
-    public UserPutController(PasswordEncoder passwordEncoder, UserCreator userCreatorServices) {
-        this.passwordEncoder = passwordEncoder;
+    public UserPutController(
+//            PasswordEncoder passwordEncoder,
+            UserCreator userCreatorServices
+    ) {
+//        this.passwordEncoder = passwordEncoder;
         this.userCreatorServices = userCreatorServices;
     }
 
@@ -41,7 +44,7 @@ public class UserPutController {
                 .firstName(requestBody.getFirstName())
                 .lastName(requestBody.getLastName())
                 .phoneNumber(requestBody.getPhoneNumber())
-                .password(passwordEncoder.encode( requestBody.getPassword()))
+                .password(requestBody.getPassword())
                 .build();
 
         userCreatorServices.createUser(user);

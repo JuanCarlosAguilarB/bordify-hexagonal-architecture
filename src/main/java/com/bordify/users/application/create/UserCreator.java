@@ -1,13 +1,9 @@
 package com.bordify.users.application.create;
 
-import com.bordify.users.domain.User;
-import com.bordify.users.domain.UserRepository;
-import com.bordify.users.domain.DuplicateEmailException;
-import com.bordify.users.domain.UserNotFoundException;
+import com.bordify.users.domain.*;
 
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 
 /**
@@ -17,9 +13,11 @@ import java.util.Optional;
 public class UserCreator {
 
     private final UserRepository userRepository;
+    private final SecurityService securityService;
 
-    public UserCreator(UserRepository userRepository) {
+    public UserCreator(UserRepository userRepository, SecurityService securityService) {
         this.userRepository = userRepository;
+        this.securityService = securityService;
     }
 
 
@@ -39,6 +37,7 @@ public class UserCreator {
             throw new DuplicateEmailException("The username " + user.getUsername() + " is already registered. Please use a different username.");
         }
 
+        user.setPassword(securityService.encode(user.getPassword()));
         userRepository.save(user);
 
     }
