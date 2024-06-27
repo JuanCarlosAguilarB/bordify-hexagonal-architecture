@@ -1,5 +1,6 @@
-package com.bordify.controllers.user;
+package com.bordify.users.infrastructure.controllers;
 
+import com.bordify.controllers.user.RequestUserBody;
 import com.bordify.users.application.create.UserCreator;
 
 import com.bordify.users.domain.User;
