@@ -1,7 +1,7 @@
 package com.bordify.domain.ports.out;
 
 import com.bordify.domain.models.dtos.TopicListDTO;
-import com.bordify.shared.domain.out.PageRequest;
+import com.bordify.shared.domain.PageRequest;
 
 import java.util.List;
 import java.util.UUID;

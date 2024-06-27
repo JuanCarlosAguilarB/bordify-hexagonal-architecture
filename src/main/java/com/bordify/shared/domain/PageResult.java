@@ -1,4 +1,4 @@
-package com.bordify.shared.domain.out;
+package com.bordify.shared.domain;
 
 import java.util.List;
 

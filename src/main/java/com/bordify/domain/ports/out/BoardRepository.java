@@ -3,8 +3,8 @@ package com.bordify.domain.ports.out;
 import com.bordify.domain.models.Board;
 import com.bordify.domain.models.dtos.BoardListDTO;
 
-import com.bordify.shared.domain.out.PageRequest;
-import com.bordify.shared.domain.out.PageResult;
+import com.bordify.shared.domain.PageRequest;
+import com.bordify.shared.domain.PageResult;
 
 import java.util.UUID;
 

@@ -2,7 +2,7 @@ package com.bordify.domain.ports.out;
 
 import com.bordify.domain.models.Task;
 import com.bordify.domain.models.dtos.TaskListDTO;
-import com.bordify.shared.domain.out.PageRequest;
+import com.bordify.shared.domain.PageRequest;
 
 import java.util.List;
 import java.util.Optional;
