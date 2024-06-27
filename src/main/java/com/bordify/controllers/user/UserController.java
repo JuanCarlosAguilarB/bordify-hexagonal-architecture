@@ -2,7 +2,7 @@ package com.bordify.controllers.user;
 
 import com.bordify.models.User;
 import com.bordify.infrastructure.ports.out.UserRepository;
-import com.bordify.users.application.create.UserService;
+import com.bordify.users.application.create.UserCreator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserService userServices;
+    private UserCreator userCreatorServices;
 
     @Autowired
     UserRepository userRepository;

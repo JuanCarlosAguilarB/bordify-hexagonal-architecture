@@ -6,7 +6,7 @@ import com.bordify.exceptions.ApiExceptionResponse;
 import com.bordify.models.Board;
 import com.bordify.services.BoardService;
 import com.bordify.services.TopicService;
-import com.bordify.users.application.create.UserService;
+import com.bordify.users.application.create.UserCreator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -31,7 +31,7 @@ public class BoardController {
     private BoardService boardService;
 
     @Autowired
-    private UserService userService;
+    private UserCreator userCreator;
 
     @Autowired
     private TopicService topicService;
@@ -55,7 +55,7 @@ public class BoardController {
 
         // Extract userId of token
         String username = auth.getName();
-        UUID userId = userService.getUserByUsername(username).getId();
+        UUID userId = userCreator.getUserByUsername(username).getId();
 
         Board board = Board.builder()
                 .name(boardRequest.getName())
@@ -109,7 +109,7 @@ public class BoardController {
 
         // verify that owner of the board is the one requesting the topics
         String username = auth.getName();
-        User user = userService.getUserByUsername(username);
+        User user = userCreator.getUserByUsername(username);
 
         boolean isUserOwnerOfBoard = boardService.isUserOwnerOfBoard(boardId, user.getId());
 
@@ -143,7 +143,7 @@ public class BoardController {
 
         String username = auth.getName();
 
-        User user = userService.getUserByUsername(username);
+        User user = userCreator.getUserByUsername(username);
 
         return ResponseEntity.ok(boardService.listBoards(pageable, user.getId()));
     }

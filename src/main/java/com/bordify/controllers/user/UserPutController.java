@@ -1,6 +1,6 @@
 package com.bordify.controllers.user;
 
-import com.bordify.users.application.create.UserService;
+import com.bordify.users.application.create.UserCreator;
 
 import com.bordify.users.domain.User;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,11 +24,11 @@ public class UserPutController {
 
     private final PasswordEncoder passwordEncoder;
 
-    private final UserService userServices;
+    private final UserCreator userCreatorServices;
 
-    public UserPutController(PasswordEncoder passwordEncoder, UserService userServices) {
+    public UserPutController(PasswordEncoder passwordEncoder, UserCreator userCreatorServices) {
         this.passwordEncoder = passwordEncoder;
-        this.userServices = userServices;
+        this.userCreatorServices = userCreatorServices;
     }
 
     @Operation(summary = "Create a new user", description = "Creates a new user", tags = { "User" })
@@ -44,7 +44,7 @@ public class UserPutController {
                 .password(passwordEncoder.encode( requestBody.getPassword()))
                 .build();
 
-        userServices.createUser(user);
+        userCreatorServices.createUser(user);
 
         Map<String,String> response = Map.of("message","User created");
         return ResponseEntity.status(HttpStatus.CREATED)

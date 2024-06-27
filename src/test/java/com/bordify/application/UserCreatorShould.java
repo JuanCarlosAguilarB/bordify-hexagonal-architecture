@@ -4,7 +4,7 @@ package com.bordify.application;
 
 
 
-import com.bordify.users.application.create.UserService;
+import com.bordify.users.application.create.UserCreator;
 import com.bordify.users.domain.UserNotFoundException;
 import com.bordify.users.domain.User;
 import com.bordify.users.domain.UserRepository;
@@ -21,10 +21,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class UserServiceShould {
+public class UserCreatorShould {
 
     private final UserRepository userRepositoryMock = Mockito.mock(UserRepository.class);
-    private final UserService userService = new UserService(
+    private final UserCreator userCreator = new UserCreator(
             userRepositoryMock
     );
 
@@ -39,7 +39,7 @@ public class UserServiceShould {
 
         // When
         when(userRepositoryMock.findByUsername(userName)).thenReturn(Optional.of(userTest));
-        User user = userService.getUserByUsername(userName);
+        User user = userCreator.getUserByUsername(userName);
 
         // Then
         Mockito.verify(userRepositoryMock, Mockito.times(1)).findByUsername(userName);
@@ -54,7 +54,7 @@ public class UserServiceShould {
         when(userRepositoryMock.findByUsername(userName)).thenReturn(Optional.empty());
 
         UserNotFoundException exception = assertThrows(UserNotFoundException.class, () -> {
-            userService.getUserByUsername(userName);
+            userCreator.getUserByUsername(userName);
         });
 
     }
@@ -64,7 +64,7 @@ public class UserServiceShould {
         // the absence of errors is what tells me that the user was created correctly
         User userTest = UserModelTestService.createValidUser();
 
-        userService.createUser(userTest);
+        userCreator.createUser(userTest);
         Mockito.verify(userRepositoryMock, Mockito.times(1)).save(userTest);
 
 

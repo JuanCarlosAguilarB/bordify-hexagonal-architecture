@@ -14,11 +14,11 @@ import java.util.Optional;
  * Service class for user-related operations.
  */
 @Service
-public class UserService {
+public class UserCreator {
 
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserCreator(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

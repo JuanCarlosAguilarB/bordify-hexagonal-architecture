@@ -2,7 +2,7 @@ package com.bordify.controllers.auth;
 
 import com.bordify.users.domain.User;
 import com.bordify.services.JwtService;
-import com.bordify.users.application.create.UserService;
+import com.bordify.users.application.create.UserCreator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class AuthController {
     private JwtService jwtService;
 
     @Autowired
-    private UserService userService;
+    private UserCreator userCreator;
 
     /**
      * Authenticates a user and returns a JWT token.
@@ -53,7 +53,7 @@ public class AuthController {
         );
 
 
-        User user = userService.getUserByUsername(username);
+        User user = userCreator.getUserByUsername(username);
         String id = user.getId().toString();
 
         String token = jwtService.getAccessToken(username);
