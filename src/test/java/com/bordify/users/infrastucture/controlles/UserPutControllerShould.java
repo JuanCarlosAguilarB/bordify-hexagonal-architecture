@@ -1,4 +1,4 @@
-package com.bordify.controlles;
+package com.bordify.users.infrastucture.controlles;
 
 
 import com.bordify.controllers.user.RequestUserBody;
