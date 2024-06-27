@@ -1,7 +1,7 @@
-package com.bordify.board.infrastructure;
+package com.bordify.board.infrastructure.persistence;
 
+import com.bordify.board.domain.BoardListDTO;
 import com.bordify.models.Board;
-import com.bordify.dtos.BoardListDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,7 +11,7 @@ import java.util.UUID;
 /**
  * Repository interface for accessing and managing board entities in the database.
  */
-public interface BoardRepository extends JpaRepository<Board, UUID> {
+public interface BoardJpaRepository extends JpaRepository<Board, UUID> {
 
     /**
      * Deletes a board by its ID.
