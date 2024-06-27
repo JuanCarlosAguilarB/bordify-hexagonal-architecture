@@ -1,7 +1,7 @@
 package com.bordify.board.infrastructure.persistence;
 
 import com.bordify.models.Topic;
-import com.bordify.models.User;
+import com.bordify.users.infrastructure.persistence.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -58,7 +58,7 @@ public class BoardEntity {
      */
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User user;
+    private UserEntity user;
 
     /**
      * List of topics associated with this board. Defined as a one-to-many relationship

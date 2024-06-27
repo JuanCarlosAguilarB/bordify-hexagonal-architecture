@@ -1,7 +1,8 @@
 package com.bordify.config;
 
+import com.bordify.users.domain.User;
+import com.bordify.users.infrastructure.persistence.UserEntity;
 import com.bordify.users.infrastructure.ports.out.UserRepository;
-import com.bordify.models.User;
 import com.bordify.users.domain.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.Collections;
+import java.util.Optional;
 
 /**
  * Configuration class for application-wide configurations.
@@ -77,7 +79,7 @@ public class ApplicationConfig {
             @Override
             public UserDetails loadUserByUsername(String email) throws UserNotFoundException {
 //                User user = userRepository.findByEmail(email);
-                User user = userRepository.findByUsername(email);
+                UserEntity user = userRepository.findByUsername(email);
 
 
                 if (user == null) {

@@ -1,6 +1,6 @@
 package com.bordify.users.infrastructure.ports.out;
 
-import com.bordify.models.User;
+import com.bordify.users.infrastructure.persistence.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +10,7 @@ import java.util.UUID;
  * Repository interface for accessing and managing user entities in the database.
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID> {
+public interface UserRepository extends JpaRepository<UserEntity, UUID> {
 
     /**
      * Checks if a user exists with the given email.
@@ -34,7 +34,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      * @param username The username of the user.
      * @return The user with the specified username, or null if not found.
      */
-    public User findByUsername(String username);
+    public UserEntity findByUsername(String username);
 
     /**
      * Retrieves a user by their email address.
@@ -42,5 +42,5 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      * @param email The email address of the user.
      * @return The user with the specified email address, or null if not found.
      */
-    public User findByEmail(String email);
+    public UserEntity findByEmail(String email);
 }

@@ -1,6 +1,6 @@
 package com.bordify.users.infrastructure.controllers;
 
-import com.bordify.models.User;
+import com.bordify.users.infrastructure.persistence.UserEntity;
 import com.bordify.users.infrastructure.ports.out.UserRepository;
 import com.bordify.users.application.create.UserCreator;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,9 +28,9 @@ public class UserController {
 
     @Operation(summary = "Get a user", description = "Get a user", tags = { "User" })
     @GetMapping(value = "/users/me/")
-    public User getUser() {
+    public UserEntity getUser() {
 
-        User user = userRepository.findByUsername("1");
+        UserEntity user = userRepository.findByUsername("1");
         return user;
     }
 }

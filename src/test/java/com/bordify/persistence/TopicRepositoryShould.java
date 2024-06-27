@@ -4,7 +4,6 @@ import com.bordify.dtos.TopicListDTO;
 import com.bordify.models.Board;
 import com.bordify.models.Color;
 import com.bordify.models.Topic;
-import com.bordify.models.User;
 import com.bordify.persistence.models.BoardModelTestService;
 import com.bordify.persistence.models.ColorModelTestService;
 import com.bordify.persistence.models.TopicModelTestService;
