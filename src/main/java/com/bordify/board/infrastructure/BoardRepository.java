@@ -1,4 +1,4 @@
-package com.bordify.repositories;
+package com.bordify.board.infrastructure;
 
 import com.bordify.models.Board;
 import com.bordify.dtos.BoardListDTO;

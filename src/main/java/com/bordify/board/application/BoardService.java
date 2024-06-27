@@ -1,11 +1,11 @@
-package com.bordify.services;
+package com.bordify.board.application;
 
 
 import com.bordify.dtos.BoardListDTO;
 import com.bordify.exceptions.EntityNotFound;
 import com.bordify.exceptions.ResourceNotCreatedException;
 import com.bordify.models.Board;
-import com.bordify.repositories.BoardRepository;
+import com.bordify.board.infrastructure.BoardRepository;
 import com.bordify.utils.UpdateFieldsOfClasses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

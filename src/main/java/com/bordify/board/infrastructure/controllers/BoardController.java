@@ -1,11 +1,11 @@
-package com.bordify.controllers.board;
+package com.bordify.board.infrastructure.controllers;
 
 import com.bordify.users.application.find.UserFinder;
 import com.bordify.users.domain.User;
 import com.bordify.dtos.TopicListDTO;
 import com.bordify.exceptions.ApiExceptionResponse;
 import com.bordify.models.Board;
-import com.bordify.services.BoardService;
+import com.bordify.board.application.BoardService;
 import com.bordify.services.TopicService;
 import com.bordify.users.application.create.UserCreator;
 import io.swagger.v3.oas.annotations.Operation;

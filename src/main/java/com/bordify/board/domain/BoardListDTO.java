@@ -1,4 +1,4 @@
-package com.bordify.domain.models.dtos;
+package com.bordify.board.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

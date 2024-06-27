@@ -1,7 +1,7 @@
 package com.bordify.domain.ports.out;
 
-import com.bordify.domain.models.Board;
-import com.bordify.domain.models.dtos.BoardListDTO;
+import com.bordify.board.domain.Board;
+import com.bordify.board.domain.BoardListDTO;
 
 import com.bordify.shared.domain.PageRequest;
 import com.bordify.shared.domain.PageResult;
