@@ -45,7 +45,7 @@ Bordify is a monolithic Trello-style application designed to manage tasks and pr
 
 Diagram of tables.
 
-![diagram database](/home/juan/projects/java/bordify-hexagonal-architecture/images/diagram_db.png)
+![diagram database](/images/diagram_db.png)
 
 
 ### Installation
