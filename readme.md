@@ -41,6 +41,12 @@ Bordify is a monolithic Trello-style application designed to manage tasks and pr
             └── com.bordify/
                 └── BordifyApplicationTest.java
 ```
+### Database
+
+Diagram of tables.
+
+![diagram database](/home/juan/projects/java/bordify-hexagonal-architecture/images/diagram_db.png)
+
 
 ### Installation
 
@@ -68,18 +74,6 @@ cd bordify-monolith
 docker-compose up
 ```
 * **Access the application at `http://localhost:8080`.**
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
