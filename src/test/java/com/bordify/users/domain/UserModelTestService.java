@@ -1,7 +1,5 @@
-package com.bordify.persistence.models;
+package com.bordify.users.domain;
 
-
-import com.bordify.users.domain.User;
 
 import java.time.LocalTime;
 import java.util.UUID;
