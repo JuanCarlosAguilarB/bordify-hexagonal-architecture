@@ -1,7 +1,4 @@
-package com.bordify.domain.ports.out;
-
-import com.bordify.board.domain.Board;
-import com.bordify.board.domain.BoardListDTO;
+package com.bordify.board.domain;
 
 import com.bordify.shared.domain.PageRequest;
 import com.bordify.shared.domain.PageResult;
@@ -52,4 +49,12 @@ public interface BoardRepository {
      * @return The board DTO.
      */
     public Board findDtoById(UUID boardId);
+
+
+    /**
+     * Saves a board entity to the database.
+     *
+     * @param board The board entity to save.
+     */
+    public void save(Board board);
 }
