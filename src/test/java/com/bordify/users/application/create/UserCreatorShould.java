@@ -1,7 +1,6 @@
-package com.bordify.users.application;
+package com.bordify.users.application.create;
 
 import com.bordify.users.domain.UserModelTestService;
-import com.bordify.users.application.create.UserCreator;
 import com.bordify.users.domain.User;
 import com.bordify.users.domain.UserRepository;
 import org.junit.jupiter.api.DisplayName;
