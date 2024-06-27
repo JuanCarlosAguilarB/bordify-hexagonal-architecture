@@ -1,4 +1,4 @@
-package com.bordify.domain.models;
+package com.bordify.board.domain;
 
 import com.bordify.users.domain.User;
 import lombok.*;
@@ -12,7 +12,6 @@ public class Board {
 
     private UUID        id;
     private String      name;
-    private UUID        userId;
     private User user;
 
 }
