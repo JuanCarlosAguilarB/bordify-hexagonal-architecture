@@ -1,6 +1,6 @@
 package com.bordify.board.domain;
 
-import com.bordify.shared.domain.PageRequest;
+import com.bordify.shared.domain.PaginationRequest;
 import com.bordify.shared.domain.PageResult;
 
 import java.util.UUID;
@@ -31,7 +31,7 @@ public interface BoardRepository {
      * @param pageable The pagination information.
      * @return A PageResult of board DTOs.
      */
-    public PageResult<BoardListDTO> findBy(PageRequest pageable);
+    public PageResult<BoardListDTO> findBy(PaginationRequest pageable);
 
     /**
      * Retrieves a page of board DTOs filtered by user ID.
@@ -40,7 +40,7 @@ public interface BoardRepository {
      * @param userId The ID of the user.
      * @return A PageResult of board DTOs filtered by user ID.
      */
-    public PageResult<BoardListDTO> findByUserId(PageRequest pageable, UUID userId);
+    public PageResult<BoardListDTO> findByUserId(PaginationRequest pageable, UUID userId);
 
     /**
      * Finds a board DTO by its ID.

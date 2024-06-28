@@ -1,7 +1,7 @@
 package com.bordify.domain.ports.out;
 
 import com.bordify.domain.models.dtos.TopicListDTO;
-import com.bordify.shared.domain.PageRequest;
+import com.bordify.shared.domain.PaginationRequest;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,5 +18,5 @@ public interface TopicRepository {
      * @param pageable The pagination information.
      * @return A list of topic DTOs associated with the specified boardEntity ID.
      */
-    List<TopicListDTO> findByBoardIdCustom(UUID boardId, PageRequest pageable);
+    List<TopicListDTO> findByBoardIdCustom(UUID boardId, PaginationRequest pageable);
 }

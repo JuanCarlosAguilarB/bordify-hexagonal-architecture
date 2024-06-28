@@ -2,7 +2,7 @@ package com.bordify.domain.ports.out;
 
 import com.bordify.domain.models.Task;
 import com.bordify.domain.models.dtos.TaskListDTO;
-import com.bordify.shared.domain.PageRequest;
+import com.bordify.shared.domain.PaginationRequest;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +21,7 @@ public interface TaskRepository {
      * @param pageable The pagination information.
      * @return A list of task DTOs associated with the specified topic ID.
      */
-    public List<TaskListDTO> findByTopicId(UUID id, PageRequest pageable);
+    public List<TaskListDTO> findByTopicId(UUID id, PaginationRequest pageable);
 
     /**
      * Retrieves a task by its ID.
