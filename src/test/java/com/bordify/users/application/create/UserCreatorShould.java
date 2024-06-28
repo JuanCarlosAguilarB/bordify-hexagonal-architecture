@@ -8,8 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.mockito.Mockito.when;
-
 public class UserCreatorShould {
 
     private final UserRepository userRepositoryMock = Mockito.mock(UserRepository.class);
@@ -24,7 +22,7 @@ public class UserCreatorShould {
     @Test
     public void shouldCreateUser() {
         // the absence of errors is what tells me that the user was created correctly
-        User userTest = UserModelTestService.createValidUser();
+        User userTest = UserModelTestService.createValidUserDomain();
 
         userCreator.createUser(userTest);
         Mockito.verify(userRepositoryMock, Mockito.times(1)).save(userTest);

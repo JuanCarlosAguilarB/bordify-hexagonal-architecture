@@ -10,6 +10,8 @@ import org.mockito.Mockito;
 
 import java.util.Optional;
 
+import static com.bordify.users.domain.UserModelTestService.createValidUserDomain;
+import static com.bordify.users.domain.UserModelTestService.createValidUserEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
@@ -29,7 +31,7 @@ public class UserFinderShould {
 
         // Given
         String userName = "XXXX";
-        User userTest = UserModelTestService.createValidUser();
+        User userTest = createValidUserDomain();
         userTest.setUsername(userName);
 
         // When

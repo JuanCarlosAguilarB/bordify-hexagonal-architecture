@@ -2,11 +2,14 @@ package com.bordify.persistence;
 
 
 import com.bordify.board.infrastructure.persistence.BoardEntity;
+import com.bordify.board.infrastructure.persistence.BoardJpaRepository;
+import com.bordify.boards.infrastructure.persistence.models.BoardModelTestService;
 import com.bordify.dtos.TaskListDTO;
-import com.bordify.infrastructure.ports.out.UserRepository;
 import com.bordify.models.*;
 import com.bordify.persistence.models.*;
 import com.bordify.repositories.*;
+import com.bordify.users.infrastructure.persistence.UserEntity;
+import com.bordify.users.infrastructure.persistence.UserJpaRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
+import static com.bordify.users.domain.UserModelTestService.createValidUserEntity;
+
 @DataJpaTest
 public class TaskRepositoryShould {
 
@@ -23,9 +28,9 @@ public class TaskRepositoryShould {
     @Autowired
     private TaskRepository taskRepository;
     @Autowired
-    private UserRepository userRepository;
+    private UserJpaRepository userRepository;
     @Autowired
-    private BoardRepository boardRepository;
+    private BoardJpaRepository boardRepository;
     @Autowired
     private ColorRepository colorRepository;
     @Autowired
@@ -35,7 +40,7 @@ public class TaskRepositoryShould {
     @Test
     public void shouldFindTaskById() {
 
-        User userTest = UserModelTestService.createValidUser();
+        UserEntity userTest = createValidUserEntity();
         userRepository.save(userTest);
 
         BoardEntity boardEntityTest = BoardModelTestService.createValidBoard(userTest);
@@ -62,7 +67,7 @@ public class TaskRepositoryShould {
     @Test
     public void shouldFindAllTasksOfTopic() {
 
-        User userTest = UserModelTestService.createValidUser();
+        UserEntity userTest = createValidUserEntity();
         userRepository.save(userTest);
 
         BoardEntity boardEntityTest = BoardModelTestService.createValidBoard(userTest);
