@@ -26,20 +26,6 @@ public class BoardService {
     private BoardJpaRepository boardRepository;
 
     /**
-     * Creates a new board and saves it in the database.
-     *
-     * @param board The board entity to be saved.
-     * @throws ResourceNotCreatedException if the board cannot be created.
-     */
-    public void createBoard(BoardEntity board) {
-        try {
-            boardRepository.save(board);
-        } catch (Exception e) {
-            throw new ResourceNotCreatedException("Error creating board");
-        }
-    }
-
-    /**
      * Deletes a board by its ID.
      *
      * @param boardId The UUID of the board to delete.

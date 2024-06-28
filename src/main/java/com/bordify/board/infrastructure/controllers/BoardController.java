@@ -40,43 +40,7 @@ public class BoardController {
     @Autowired
     private UserFinder userFinder;
 
-    /**
-     * Creates a new board for the authenticated user.
-     *
-     * @param boardRequest The request containing the name of the board to be created.
-     * @param auth The authentication object containing information about the authenticated user.
-     * @return A ResponseEntity with the created board.
-     */
-    @Operation(summary = "Create a new board", description = "Creates a new board for the authenticated user", tags = { "Board" })
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "201", description = "User authenticated successfully", content = {
-//                    @Content(mediaType = "application/json", schema = @Schema(implementation = com.bordify.controllers.CreateBoardResponse.class)) }),
-//    })
-    @PostMapping("/boards/")
-    public ResponseEntity<BoardEntity> createBoard(
-            @RequestBody BoardRequest boardRequest, Authentication auth) {
 
-        // Extract userId of token
-        String username = auth.getName();
-        UUID userId = userFinder.findUserByUsername(username).getId();
-
-        BoardEntity boardEntity = BoardEntity.builder()
-                .name(boardRequest.getName())
-                .userId(userId)
-                .build();
-
-
-        boardService.createBoard(
-                boardEntity
-        );
-
-        BoardEntity createBoardEntityResponse = BoardEntity.builder()
-                .name(boardEntity.getName())
-                .id(boardEntity.getId())
-                .build();
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(createBoardEntityResponse);
-    }
 
     /**
      * Deletes a board by its id.
