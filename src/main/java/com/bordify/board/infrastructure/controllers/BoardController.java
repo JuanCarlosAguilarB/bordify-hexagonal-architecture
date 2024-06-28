@@ -42,18 +42,7 @@ public class BoardController {
 
 
 
-    /**
-     * Deletes a board by its id.
-     *
-     * @param boardId The id of the board to be deleted.
-     * @return A ResponseEntity with no content.
-     */
-    @Operation(summary = "Delete a board", description = "Deletes a board by its id", tags = { "Board" })
-    @DeleteMapping("/boards/{boardId}/")
-    public ResponseEntity<?> deleteBoard(@PathVariable UUID boardId) {
-        boardService.deleteBoard(boardId);
-        return ResponseEntity.ok().build();
-    }
+
 
 
     /**
@@ -124,27 +113,6 @@ public class BoardController {
      */
     @PatchMapping("/boards/{id}/")
     public ResponseEntity<?> handler(@PathVariable UUID id, @RequestBody BoardRequest boardRequest) {
-
-        BoardEntity boardEntity = new BoardEntity().builder()
-                .id(id)
-                .name(boardRequest.getName())
-                .build();
-
-        BoardEntity boardEntityUpdated = boardService.update(boardEntity);
-
-        return ResponseEntity.ok(boardEntityUpdated);
-    }
-
-
-    /**
-     * Update a board.
-     *
-     * @param id The id of the board to update.
-     * @param boardRequest The request body containing the updated board data.
-     * @return A ResponseEntity with the updated board.
-     */
-    @PutMapping("/boards/{id}/")
-    public ResponseEntity<?> updateBoard(@PathVariable UUID id, @RequestBody BoardRequest boardRequest) {
 
         BoardEntity boardEntity = new BoardEntity().builder()
                 .id(id)
