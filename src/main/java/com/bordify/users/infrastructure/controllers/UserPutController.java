@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,7 +36,7 @@ public class UserPutController {
     }
 
     @Operation(summary = "Create a new user", description = "Creates a new user", tags = { "User" })
-    @PostMapping(value = "/v1/users/")
+    @PutMapping(value = "/v1/users/")
     public ResponseEntity<?> createUser(@RequestBody RequestUserBody requestBody) {
 
         User user = User.builder()
