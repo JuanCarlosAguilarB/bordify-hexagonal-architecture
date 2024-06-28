@@ -1,6 +1,6 @@
 package com.bordify.board.infrastructure.persistence;
 
-import com.bordify.board.application.create.mapper.BoardMapper;
+import com.bordify.board.infrastructure.mapper.BoardMapper;
 import com.bordify.board.domain.Board;
 import com.bordify.board.domain.BoardListDTO;
 import com.bordify.board.domain.BoardRepository;

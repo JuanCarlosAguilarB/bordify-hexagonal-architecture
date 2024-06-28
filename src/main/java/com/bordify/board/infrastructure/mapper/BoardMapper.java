@@ -1,4 +1,4 @@
-package com.bordify.board.application.create.mapper;
+package com.bordify.board.infrastructure.mapper;
 
 import com.bordify.board.domain.Board;
 import com.bordify.board.infrastructure.persistence.BoardEntity;
