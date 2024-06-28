@@ -66,7 +66,7 @@ public class BoardEntity {
      * on a Board will cascade to its topics.
      */
     // @JsonIgnoreProperties("board") // to avoid infinite recursion by circular imports
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.ALL)
     private List<Topic> topics;
 
 }
