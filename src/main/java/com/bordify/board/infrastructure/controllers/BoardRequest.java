@@ -8,9 +8,6 @@ import java.util.UUID;
 @Data
 public class BoardRequest {
 
-
     private String name;
-    private UUID boadId;
-
 
 }

@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,9 +41,13 @@ public class BoardPutController {
      */
 
     @Operation(summary = "Create a new board", description = "Creates a new board for the authenticated user", tags = { "Board" })
-    @PutMapping(value = "/v1/boards/")
+    @PutMapping(value = "/v1/boards/{id}/")
     public ResponseEntity<?> create(
-            @RequestBody BoardRequest boardRequest, Authentication auth) {
+            @RequestBody BoardRequest boardRequest,
+            Authentication auth,
+            @PathVariable UUID id
+
+    ) {
 
         // Extract userId of token
 
@@ -52,7 +57,7 @@ public class BoardPutController {
         User user = userFinder.findUserByUsername(username);
 
         Board board = Board.builder()
-                .id(boardRequest.getBoadId())
+                .id(id)
                 .name(boardRequest.getName())
                 .user(user)
                 .build();

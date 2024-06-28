@@ -11,12 +11,10 @@ import org.springframework.http.ResponseEntity;
 
 //import org.springframework.security.crypto.password.PasswordEncoder;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.UUID;
 
 
 @Tag(name = "User", description = "User management operations")
@@ -36,10 +34,14 @@ public class UserPutController {
     }
 
     @Operation(summary = "Create a new user", description = "Creates a new user", tags = { "User" })
-    @PutMapping(value = "/v1/users/")
-    public ResponseEntity<?> createUser(@RequestBody RequestUserBody requestBody) {
+    @PutMapping(value = "/v1/users/{id}/")
+    public ResponseEntity<?> createUser(
+            @RequestBody RequestUserBody requestBody,
+            @PathVariable UUID id
+    ) {
 
         User user = User.builder()
+                .id(id)
                 .username(requestBody.getUsername())
                 .email(requestBody.getEmail())
                 .firstName(requestBody.getFirstName())
