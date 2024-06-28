@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoardCreator {
 
-    private BoardRepository boardRepository;
+    private final BoardRepository boardRepository;
+
+    public BoardCreator(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
+    }
 
     /**
      * Creates a new boardEntity and saves it in the database.
