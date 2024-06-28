@@ -25,18 +25,6 @@ public class BoardService {
     @Autowired
     private BoardJpaRepository boardRepository;
 
-    /**
-     * Deletes a board by its ID.
-     *
-     * @param boardId The UUID of the board to delete.
-     * @throws EntityNotFound if no board exists with the given ID.
-     */
-    public void deleteBoard(UUID boardId) {
-        if (!boardRepository.existsById(boardId)) {
-            throw new EntityNotFound("Error deleting board: Board not found");
-        }
-        boardRepository.deleteById(boardId);
-    }
 
     /**
      * Lists all boards for a given user.
