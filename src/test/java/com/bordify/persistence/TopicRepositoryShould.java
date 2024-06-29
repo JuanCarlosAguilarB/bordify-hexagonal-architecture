@@ -2,13 +2,13 @@ package com.bordify.persistence;
 
 import com.bordify.board.infrastructure.persistence.BoardEntity;
 import com.bordify.board.infrastructure.persistence.BoardJpaRepository;
+import com.bordify.color.infrastructure.persistence.ColorEntity;
 import com.bordify.dtos.TopicListDTO;
-import com.bordify.color.infrastructure.persistence.Color;
 import com.bordify.models.Topic;
 import com.bordify.boards.infrastructure.persistence.models.BoardModelTestService;
 import com.bordify.persistence.models.ColorModelTestService;
 import com.bordify.persistence.models.TopicModelTestService;
-import com.bordify.color.infrastructure.persistence.ColorRepository;
+import com.bordify.color.infrastructure.persistence.ColorJpaRepository;
 import com.bordify.repositories.TopicRepository;
 import com.bordify.users.domain.UserModelTestService;
 import com.bordify.users.infrastructure.persistence.UserEntity;
@@ -32,7 +32,7 @@ public class TopicRepositoryShould {
     private BoardJpaRepository boardRepository;
 
     @Autowired
-    private ColorRepository  colorRepository;
+    private ColorJpaRepository colorJpaRepository;
 
     @Autowired
     private UserJpaRepository userRepository;
@@ -49,11 +49,11 @@ public class TopicRepositoryShould {
         BoardEntity  noRalatedBoardTest = BoardModelTestService.createValidBoard(userTest);
         boardRepository.saveAll(List.of(boardTest,noRalatedBoardTest));
 
-        Color colorTest = ColorModelTestService.createValidColor();
-        colorRepository.save(colorTest);
+        ColorEntity colorEntityTest = ColorModelTestService.createValidColor();
+        colorJpaRepository.save(colorEntityTest);
 
-        Topic topicTest = TopicModelTestService.createValidTopic(colorTest, boardTest);
-        Topic noRalatedTopicTest = TopicModelTestService.createValidTopic(colorTest, noRalatedBoardTest);
+        Topic topicTest = TopicModelTestService.createValidTopic(colorEntityTest, boardTest);
+        Topic noRalatedTopicTest = TopicModelTestService.createValidTopic(colorEntityTest, noRalatedBoardTest);
         topicRepository.saveAll(List.of(topicTest, noRalatedTopicTest));
 
         Pageable pageable = Pageable.unpaged();

@@ -4,8 +4,8 @@ package com.bordify.persistence;
 import com.bordify.board.infrastructure.persistence.BoardEntity;
 import com.bordify.board.infrastructure.persistence.BoardJpaRepository;
 import com.bordify.boards.infrastructure.persistence.models.BoardModelTestService;
-import com.bordify.color.infrastructure.persistence.Color;
-import com.bordify.color.infrastructure.persistence.ColorRepository;
+import com.bordify.color.infrastructure.persistence.ColorEntity;
+import com.bordify.color.infrastructure.persistence.ColorJpaRepository;
 import com.bordify.dtos.TaskListDTO;
 import com.bordify.models.*;
 import com.bordify.persistence.models.*;
@@ -34,7 +34,7 @@ public class TaskRepositoryShould {
     @Autowired
     private BoardJpaRepository boardRepository;
     @Autowired
-    private ColorRepository colorRepository;
+    private ColorJpaRepository colorJpaRepository;
     @Autowired
     private TopicRepository topicRepository;
 
@@ -48,10 +48,10 @@ public class TaskRepositoryShould {
         BoardEntity boardEntityTest = BoardModelTestService.createValidBoard(userTest);
         boardRepository.save(boardEntityTest);
 
-        Color colorTest = ColorModelTestService.createValidColor();
-        colorRepository.save(colorTest);
+        ColorEntity colorEntityTest = ColorModelTestService.createValidColor();
+        colorJpaRepository.save(colorEntityTest);
 
-        Topic topicTest = TopicModelTestService.createValidTopic(colorTest, boardEntityTest);
+        Topic topicTest = TopicModelTestService.createValidTopic(colorEntityTest, boardEntityTest);
         topicRepository.save(topicTest);
 
 
@@ -75,10 +75,10 @@ public class TaskRepositoryShould {
         BoardEntity boardEntityTest = BoardModelTestService.createValidBoard(userTest);
         boardRepository.save(boardEntityTest);
 
-        Color colorTest = ColorModelTestService.createValidColor();
-        colorRepository.save(colorTest);
+        ColorEntity colorEntityTest = ColorModelTestService.createValidColor();
+        colorJpaRepository.save(colorEntityTest);
 
-        Topic topicTest = TopicModelTestService.createValidTopic(colorTest, boardEntityTest);
+        Topic topicTest = TopicModelTestService.createValidTopic(colorEntityTest, boardEntityTest);
         topicRepository.save(topicTest);
 
         List<Task> listTaskTopic =  TaskModelTestService.createValidListTask(topicTest, 5);
