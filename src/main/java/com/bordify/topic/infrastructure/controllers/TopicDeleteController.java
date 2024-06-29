@@ -22,7 +22,7 @@ public class TopicDeleteController {
      *
      * @param id The ID of the topicEntity to delete.
      */
-    @DeleteMapping("/topics/{id}/")
+    @DeleteMapping("/v1/topics/{id}/")
     public void deleteTopic(@PathVariable UUID id) {
         topicService.delete(id);
     }
