@@ -30,8 +30,6 @@ public class TopicService {
     @Autowired
     private TaskService taskService;
 
-
-
     /**
      * Retrieves a paginated list of topicEntities for a specified board with their related tasks.
      *
@@ -51,15 +49,6 @@ public class TopicService {
         }
 
         return new PageImpl<>(topics, pageable, topics.size());
-    }
-
-    /**
-     * Deletes a topicEntity by its UUID.
-     *
-     * @param id The UUID of the topicEntity to be deleted.
-     */
-    public void deleteTopic(UUID id) {
-        topicJpaRepository.deleteById(id);
     }
 
 }
