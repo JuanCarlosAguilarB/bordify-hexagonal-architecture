@@ -86,23 +86,7 @@ public class BoardController {
         return ResponseEntity.ok(topics);
     }
 
-    /**
-     * List all boards.
-     *
-     * @param pageable The pagination information.
-     * @param auth The authentication object containing information about the authenticated user.
-     * @return A ResponseEntity with the list of boards.
-     */
-    @GetMapping("/boards/")
-    @Operation(summary = "List boards", description = "List all boards", tags = { "Board" })
-    public ResponseEntity<?> listBoards(Pageable pageable, Authentication auth) {
 
-        String username = auth.getName();
-
-        User user = userFinder.findUserByUsername(username);
-
-        return ResponseEntity.ok(boardService.listBoards(pageable, user.getId()));
-    }
 
     /**
      * Handle a partial update of a board.
