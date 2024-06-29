@@ -27,7 +27,7 @@ public class BoardPatchController {
      * @param boardRequest The request body containing the updated board data.
      * @return A ResponseEntity with the updated board.
      */
-    @PatchMapping("/boards/{id}/")
+    @PatchMapping("/v1/boards/{id}/")
     public ResponseEntity<?> handler(@PathVariable UUID id, @RequestBody Map<String, Object> boardRequest) {
 
         boardUpdater.update(id, boardRequest);

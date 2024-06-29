@@ -64,7 +64,7 @@ public class BoardGetController {
     @Operation(summary = "Get all topics of a board",
             description = "Lists all topics of a board for a given board",
             tags = { "Board" })
-    @GetMapping("/boards/{boardId}/topics/")
+    @GetMapping("/v1/boards/{boardId}/topics/")
     public ResponseEntity<?> getTopicsOfBoard(
             @PathVariable UUID boardId,
             Pageable pageable,
