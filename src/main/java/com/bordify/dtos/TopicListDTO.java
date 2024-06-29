@@ -1,7 +1,7 @@
 package com.bordify.dtos;
 
 
-import com.bordify.models.Color;
+import com.bordify.color.infrastructure.persistence.Color;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

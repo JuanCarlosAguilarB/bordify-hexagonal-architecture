@@ -1,7 +1,7 @@
 package com.bordify.persistence.models;
 
 import com.bordify.board.infrastructure.persistence.BoardEntity;
-import com.bordify.models.Color;
+import com.bordify.color.infrastructure.persistence.Color;
 import com.bordify.models.Topic;
 
 import java.util.UUID;

@@ -1,6 +1,6 @@
 package com.bordify.persistence.models;
 
-import com.bordify.models.Color;
+import com.bordify.color.infrastructure.persistence.Color;
 
 public class ColorModelTestService {
 

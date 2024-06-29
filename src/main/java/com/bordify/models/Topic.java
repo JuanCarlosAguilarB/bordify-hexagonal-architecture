@@ -1,6 +1,7 @@
 package com.bordify.models;
 
 import com.bordify.board.infrastructure.persistence.BoardEntity;
+import com.bordify.color.infrastructure.persistence.Color;
 import jakarta.persistence.*;
 import lombok.*;
 

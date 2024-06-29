@@ -1,4 +1,4 @@
-package com.bordify.domain.models;
+package com.bordify.color.domain;
 
 import lombok.*;
 

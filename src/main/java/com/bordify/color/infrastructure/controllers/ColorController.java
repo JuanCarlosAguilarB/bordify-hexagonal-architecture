@@ -1,7 +1,7 @@
-package com.bordify.controllers.color;
+package com.bordify.color.infrastructure.controllers;
 
-import com.bordify.models.Color;
-import com.bordify.services.ColorService;
+import com.bordify.color.infrastructure.persistence.Color;
+import com.bordify.color.application.ColorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
-package com.bordify.repositories;
+package com.bordify.color.infrastructure.persistence;
 
-import com.bordify.models.Color;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

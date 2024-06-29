@@ -1,6 +1,6 @@
 package com.bordify.domain.models.dtos;
 
-import com.bordify.domain.models.Color;
+import com.bordify.color.domain.Color;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

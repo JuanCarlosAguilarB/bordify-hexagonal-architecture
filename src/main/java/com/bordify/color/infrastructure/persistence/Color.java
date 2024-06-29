@@ -1,4 +1,4 @@
-package com.bordify.models;
+package com.bordify.color.infrastructure.persistence;
 
 import jakarta.persistence.*;
 import lombok.*;

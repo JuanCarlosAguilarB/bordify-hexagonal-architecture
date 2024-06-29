@@ -1,7 +1,7 @@
-package com.bordify.services;
+package com.bordify.color.application;
 
-import com.bordify.models.Color;
-import com.bordify.repositories.ColorRepository;
+import com.bordify.color.infrastructure.persistence.Color;
+import com.bordify.color.infrastructure.persistence.ColorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

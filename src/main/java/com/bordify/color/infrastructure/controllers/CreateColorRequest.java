@@ -1,4 +1,4 @@
-package com.bordify.controllers.color;
+package com.bordify.color.infrastructure.controllers;
 
 import lombok.Getter;
 import lombok.Setter;
