@@ -4,7 +4,7 @@ import com.bordify.board.infrastructure.persistence.BoardEntity;
 import com.bordify.board.infrastructure.persistence.BoardJpaRepository;
 import com.bordify.color.infrastructure.persistence.ColorEntity;
 import com.bordify.dtos.TopicListDTO;
-import com.bordify.topic.infrastructure.persistence.Topic;
+import com.bordify.topic.infrastructure.persistence.TopicEntity;
 import com.bordify.boards.infrastructure.persistence.models.BoardModelTestService;
 import com.bordify.persistence.models.ColorModelTestService;
 import com.bordify.persistence.models.TopicModelTestService;
@@ -23,7 +23,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @DataJpaTest
-public class TopicRepositoryShould {
+public class TopicEntityRepositoryShould {
 
     @Autowired
     private TopicRepository topicRepository;
@@ -38,7 +38,7 @@ public class TopicRepositoryShould {
     private UserJpaRepository userRepository;
 
 
-    @DisplayName("Should find one topic by boardId")
+    @DisplayName("Should find one topicEntity by boardId")
     @Test
     public void shouldFindOneTopicByBoardId() {
 
@@ -52,19 +52,19 @@ public class TopicRepositoryShould {
         ColorEntity colorEntityTest = ColorModelTestService.createValidColor();
         colorJpaRepository.save(colorEntityTest);
 
-        Topic topicTest = TopicModelTestService.createValidTopic(colorEntityTest, boardTest);
-        Topic noRalatedTopicTest = TopicModelTestService.createValidTopic(colorEntityTest, noRalatedBoardTest);
-        topicRepository.saveAll(List.of(topicTest, noRalatedTopicTest));
+        TopicEntity topicEntityTest = TopicModelTestService.createValidTopic(colorEntityTest, boardTest);
+        TopicEntity noRalatedTopicEntityTest = TopicModelTestService.createValidTopic(colorEntityTest, noRalatedBoardTest);
+        topicRepository.saveAll(List.of(topicEntityTest, noRalatedTopicEntityTest));
 
         Pageable pageable = Pageable.unpaged();
-        List<TopicListDTO> topicFromDb = topicRepository.findByBoardIdCustom(topicTest.getBoardId(), pageable);
+        List<TopicListDTO> topicFromDb = topicRepository.findByBoardIdCustom(topicEntityTest.getBoardId(), pageable);
 
-        // assert for verify that are not related topics
-        Assertions.assertNotEquals(topicTest.getBoardId(), noRalatedTopicTest.getBoardId());
+        // assert for verify that are not related topicEntities
+        Assertions.assertNotEquals(topicEntityTest.getBoardId(), noRalatedTopicEntityTest.getBoardId());
 
         Assertions.assertEquals(1, topicFromDb.size());
 
-        Assertions.assertEquals(topicTest.getId(), topicFromDb.get(0).getId());
+        Assertions.assertEquals(topicEntityTest.getId(), topicFromDb.get(0).getId());
 
     }
 

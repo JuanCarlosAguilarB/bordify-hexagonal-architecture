@@ -2,7 +2,7 @@ package com.bordify.topic.infrastructure.controllers;
 
 import com.bordify.services.TaskService;
 import com.bordify.topic.application.TopicService;
-import com.bordify.topic.infrastructure.persistence.Topic;
+import com.bordify.topic.infrastructure.persistence.TopicEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 /**
- * Controller class for managing topics.
+ * Controller class for managing topicEntities.
  */
 @RestController
-@Tag(name = "Topic", description = "Topic management operations")
+@Tag(name = "TopicEntity", description = "TopicEntity management operations")
 public class TopicController {
 
     @Autowired
@@ -28,83 +28,83 @@ public class TopicController {
     private TaskService taskService;
 
     /**
-     * Retrieves tasks associated with a topic.
+     * Retrieves tasks associated with a topicEntity.
      *
-     * @param topicId  The ID of the topic.
+     * @param topicId  The ID of the topicEntity.
      * @param pageable Pagination information.
-     * @return ResponseEntity with tasks of the specified topic.
+     * @return ResponseEntity with tasks of the specified topicEntity.
      */
     @GetMapping("/topic/{topicId}/tasks/")
     public ResponseEntity<?> getTaskOfTopic(@PathVariable UUID topicId, Pageable pageable) {
         return ResponseEntity.ok(taskService.getTaskOfTopic(topicId, pageable));
     }
 
-    @Operation(summary = "Create a new topic", description = "Creates a new topic", tags = { "Topic" })
+    @Operation(summary = "Create a new topicEntity", description = "Creates a new topicEntity", tags = { "TopicEntity" })
     @PostMapping("/topics/")
     public ResponseEntity<?> createTopic(
             @RequestBody TopicRequest topicRequest,
             Authentication authentication){
 
-        Topic topic = new Topic().builder()
+        TopicEntity topicEntity = new TopicEntity().builder()
                 .name(topicRequest.getName())
                 .boardId(topicRequest.getBoardId())
                 .colorId(topicRequest.getColorId())
                 .build();
 
-                topicService.createTopic(topic);
-        return ResponseEntity.status(HttpStatus.CREATED).body(topic);
+                topicService.createTopic(topicEntity);
+        return ResponseEntity.status(HttpStatus.CREATED).body(topicEntity);
     }
 
     /**
-     * Partially updates a topic.
+     * Partially updates a topicEntity.
      *
-     * @param id            The ID of the topic to update.
-     * @param topicRequest  The request body containing partial information to update the topic.
-     * @return ResponseEntity with the updated topic.
+     * @param id            The ID of the topicEntity to update.
+     * @param topicRequest  The request body containing partial information to update the topicEntity.
+     * @return ResponseEntity with the updated topicEntity.
      */
     @PatchMapping("/topics/{id}/")
     public ResponseEntity<?> partialUpdate(
         @PathVariable UUID id,
          @RequestBody TopicRequest topicRequest) {
 
-        Topic topic = new Topic().builder()
+        TopicEntity topicEntity = new TopicEntity().builder()
                 .id(id)
                 .name(topicRequest.getName())
                 .colorId(topicRequest.getColorId())
                 .boardId(topicRequest.getBoardId())
                 .build();
 
-        Topic topicUpdated = topicService.update(topic);
+        TopicEntity topicEntityUpdated = topicService.update(topicEntity);
 
-        return ResponseEntity.ok(topicUpdated);
+        return ResponseEntity.ok(topicEntityUpdated);
     }
 
     /**
-     * Updates a topic.
+     * Updates a topicEntity.
      *
-     * @param id           The ID of the topic to update.
-     * @param topicRequest The request body containing information to update the topic.
-     * @return ResponseEntity with the updated topic.
+     * @param id           The ID of the topicEntity to update.
+     * @param topicRequest The request body containing information to update the topicEntity.
+     * @return ResponseEntity with the updated topicEntity.
      */
     @PutMapping("/topics/{id}/")
     public ResponseEntity update(@PathVariable UUID id, @RequestBody TopicRequest topicRequest) {
 
-        Topic topic = new Topic().builder()
+        TopicEntity topicEntity = new TopicEntity().builder()
                 .id(id)
                 .name(topicRequest.getName())
                 .colorId(topicRequest.getColorId())
                 .boardId(topicRequest.getBoardId())
                 .build();
 
-        Topic topicUpdated = topicService.update(topic);
+        TopicEntity topicEntityUpdated = topicService.update(topicEntity);
 
-        return ResponseEntity.ok(topicUpdated);
+        return ResponseEntity.ok(topicEntityUpdated);
     }
 
     /**
-     * Deletes a topic by its ID.
+     * Deletes a topicEntity by its ID.
      *
-     * @param id The ID of the topic to delete.
+     * @param id The ID of the topicEntity to delete.
      */
     @DeleteMapping("/topics/{id}/")
     public void deleteTopic(@PathVariable UUID id) {

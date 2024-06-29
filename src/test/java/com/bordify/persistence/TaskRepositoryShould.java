@@ -10,7 +10,7 @@ import com.bordify.dtos.TaskListDTO;
 import com.bordify.models.*;
 import com.bordify.persistence.models.*;
 import com.bordify.repositories.*;
-import com.bordify.topic.infrastructure.persistence.Topic;
+import com.bordify.topic.infrastructure.persistence.TopicEntity;
 import com.bordify.topic.infrastructure.persistence.TopicRepository;
 import com.bordify.users.infrastructure.persistence.UserEntity;
 import com.bordify.users.infrastructure.persistence.UserJpaRepository;
@@ -53,11 +53,11 @@ public class TaskRepositoryShould {
         ColorEntity colorEntityTest = ColorModelTestService.createValidColor();
         colorJpaRepository.save(colorEntityTest);
 
-        Topic topicTest = TopicModelTestService.createValidTopic(colorEntityTest, boardEntityTest);
-        topicRepository.save(topicTest);
+        TopicEntity topicEntityTest = TopicModelTestService.createValidTopic(colorEntityTest, boardEntityTest);
+        topicRepository.save(topicEntityTest);
 
 
-        Task taskTest = TaskModelTestService.createValidTask(topicTest);
+        Task taskTest = TaskModelTestService.createValidTask(topicEntityTest);
         taskRepository.save(taskTest);
 
         Optional<Task> tasks = taskRepository.findById(taskTest.getId());
@@ -67,7 +67,7 @@ public class TaskRepositoryShould {
 
     }
 
-    @DisplayName("Should find all tasks of topic")
+    @DisplayName("Should find all tasks of topicEntity")
     @Test
     public void shouldFindAllTasksOfTopic() {
 
@@ -80,18 +80,18 @@ public class TaskRepositoryShould {
         ColorEntity colorEntityTest = ColorModelTestService.createValidColor();
         colorJpaRepository.save(colorEntityTest);
 
-        Topic topicTest = TopicModelTestService.createValidTopic(colorEntityTest, boardEntityTest);
-        topicRepository.save(topicTest);
+        TopicEntity topicEntityTest = TopicModelTestService.createValidTopic(colorEntityTest, boardEntityTest);
+        topicRepository.save(topicEntityTest);
 
-        List<Task> listTaskTopic =  TaskModelTestService.createValidListTask(topicTest, 5);
+        List<Task> listTaskTopic =  TaskModelTestService.createValidListTask(topicEntityTest, 5);
         taskRepository.saveAll(listTaskTopic);
 
         Pageable pageable = Pageable.unpaged();
-        List<TaskListDTO> tasks = taskRepository.findByTopicId(topicTest.getId(), pageable);
+        List<TaskListDTO> tasks = taskRepository.findByTopicId(topicEntityTest.getId(), pageable);
 
         assert !tasks.isEmpty();
         assert tasks.size() == 5;
-        assert tasks.stream().allMatch(task -> task.getTopicId().equals(topicTest.getId()));
+        assert tasks.stream().allMatch(task -> task.getTopicId().equals(topicEntityTest.getId()));
 
 
     }

@@ -18,11 +18,11 @@ import java.util.UUID;
 public interface TaskRepository extends JpaRepository<Task, UUID> {
 
     /**
-     * Retrieves a list of task DTOs by topic ID with pagination.
+     * Retrieves a list of task DTOs by topicEntity ID with pagination.
      *
-     * @param id The ID of the topic.
+     * @param id The ID of the topicEntity.
      * @param pageable The pagination information.
-     * @return A list of task DTOs associated with the specified topic ID.
+     * @return A list of task DTOs associated with the specified topicEntity ID.
      */
     public List<TaskListDTO> findByTopicId(UUID id, Pageable pageable);
 

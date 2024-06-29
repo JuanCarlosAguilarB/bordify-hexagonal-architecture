@@ -10,17 +10,17 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Repository interface for accessing and managing topic entities in the database.
+ * Repository interface for accessing and managing topicEntity entities in the database.
  */
-public interface TopicRepository extends JpaRepository<Topic, UUID> {
+public interface TopicRepository extends JpaRepository<TopicEntity, UUID> {
 
     /**
-     * Retrieves a list of topic DTOs by boardEntity ID with custom projection and pagination.
+     * Retrieves a list of topicEntity DTOs by boardEntity ID with custom projection and pagination.
      *
      * @param boardId The ID of the boardEntity.
      * @param pageable The pagination information.
-     * @return A list of topic DTOs associated with the specified boardEntity ID.
+     * @return A list of topicEntity DTOs associated with the specified boardEntity ID.
      */
-    @Query("SELECT new com.bordify.dtos.TopicListDTO(t.id, t.name, c) FROM Topic t LEFT JOIN t.colorEntity c WHERE t.boardId = :boardId")
+    @Query("SELECT new com.bordify.dtos.TopicListDTO(t.id, t.name, c) FROM TopicEntity t LEFT JOIN t.colorEntity c WHERE t.boardId = :boardId")
     List<TopicListDTO> findByBoardIdCustom(UUID boardId, Pageable pageable);
 }

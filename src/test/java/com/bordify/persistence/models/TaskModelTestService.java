@@ -1,7 +1,7 @@
 package com.bordify.persistence.models;
 
 import com.bordify.models.Task;
-import com.bordify.topic.infrastructure.persistence.Topic;
+import com.bordify.topic.infrastructure.persistence.TopicEntity;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.ArrayList;
@@ -10,23 +10,23 @@ import java.util.UUID;
 
 public class TaskModelTestService {
 
-    public static Task createValidTask(Topic topic) {
+    public static Task createValidTask(TopicEntity topicEntity) {
 
-//        Topic topic = TopicModelTestService.createValidTopic();
+//        TopicEntity topicEntity = TopicModelTestService.createValidTopic();
 
         Task task = Task.builder()
                 .id(UUID.randomUUID())
                 .name("Test Task")
                 .description("This is a test task.")
-                .topic(topic)
-                .topicId(topic.getId())
+                .topicEntity(topicEntity)
+                .topicId(topicEntity.getId())
                 .build();
 
         return task;
     }
 
 
-    public static List<Task> createValidListTask(Topic topic, int amountTask) {
+    public static List<Task> createValidListTask(TopicEntity topicEntity, int amountTask) {
 
         String generatedString = RandomStringUtils.randomAlphanumeric(10);
 
@@ -42,8 +42,8 @@ public class TaskModelTestService {
                             .id(UUID.randomUUID())
                             .name(name)
                             .description(description)
-                            .topic(topic)
-                            .topicId(topic.getId())
+                            .topicEntity(topicEntity)
+                            .topicId(topicEntity.getId())
                             .build()
             );
         }

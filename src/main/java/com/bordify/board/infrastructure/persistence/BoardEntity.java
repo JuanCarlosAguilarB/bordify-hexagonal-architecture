@@ -1,6 +1,6 @@
 package com.bordify.board.infrastructure.persistence;
 
-import com.bordify.topic.infrastructure.persistence.Topic;
+import com.bordify.topic.infrastructure.persistence.TopicEntity;
 import com.bordify.users.infrastructure.persistence.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +10,7 @@ import java.util.UUID;
 
 /**
  * Represents a board entity in the Bordify application. A board is a collection
- * of topics and is associated with a user.
+ * of topicEntities and is associated with a user.
  *
  * The BoardEntity class leverages Lombok to automate the creation of getter, setter,
  * toString, equals, and hashCode methods with the @Data annotation. It uses
@@ -61,12 +61,12 @@ public class BoardEntity {
     private UserEntity user;
 
     /**
-     * List of topics associated with this board. Defined as a one-to-many relationship
+     * List of topicEntities associated with this board. Defined as a one-to-many relationship
      * with cascade type ALL, meaning all persistence operations (like save and delete)
-     * on a Board will cascade to its topics.
+     * on a Board will cascade to its topicEntities.
      */
     // @JsonIgnoreProperties("board") // to avoid infinite recursion by circular imports
     @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.ALL)
-    private List<Topic> topics;
+    private List<TopicEntity> topicEntities;
 
 }

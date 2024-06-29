@@ -18,7 +18,7 @@ public class TaskListDTO {
     private UUID id;
 
     /**
-     * The unique identifier of the topic associated with the task.
+     * The unique identifier of the topicEntity associated with the task.
      */
     private UUID topicId;
 
@@ -43,7 +43,7 @@ public class TaskListDTO {
      * @param id The unique identifier of the task.
      * @param name The name of the task.
      * @param description The description of the task.
-     * @param topicId The unique identifier of the topic associated with the task.
+     * @param topicId The unique identifier of the topicEntity associated with the task.
      */
     public TaskListDTO(UUID id, String name, String description, UUID topicId) {
         this.id = id;
