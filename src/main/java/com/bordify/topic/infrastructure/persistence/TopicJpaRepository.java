@@ -1,7 +1,7 @@
 package com.bordify.topic.infrastructure.persistence;
 
-import com.bordify.dtos.TopicListDTO;
 
+import com.bordify.topic.domain.TopicListDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -21,6 +21,6 @@ public interface TopicJpaRepository extends JpaRepository<TopicEntity, UUID> {
      * @param pageable The pagination information.
      * @return A list of topicEntity DTOs associated with the specified boardEntity ID.
      */
-    @Query("SELECT new com.bordify.dtos.TopicListDTO(t.id, t.name, c) FROM TopicEntity t LEFT JOIN t.colorEntity c WHERE t.boardId = :boardId")
+    @Query("SELECT new com.bordify.topic.domain.TopicListDTO(t.id, t.name, c) FROM TopicEntity t LEFT JOIN t.colorEntity c WHERE t.boardId = :boardId")
     List<TopicListDTO> findByBoardIdCustom(UUID boardId, Pageable pageable);
 }

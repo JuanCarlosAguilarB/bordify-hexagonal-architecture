@@ -1,6 +1,6 @@
 package com.bordify.controllers.task;
 
-import com.bordify.dtos.TaskListDTO;
+import com.bordify.domain.models.dtos.TaskListDTO;
 import com.bordify.exceptions.EntityNotFound;
 import com.bordify.models.Task;
 import com.bordify.models.TaskItem;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 /**

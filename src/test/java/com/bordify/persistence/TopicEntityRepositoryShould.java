@@ -3,7 +3,7 @@ package com.bordify.persistence;
 import com.bordify.board.infrastructure.persistence.BoardEntity;
 import com.bordify.board.infrastructure.persistence.BoardJpaRepository;
 import com.bordify.color.infrastructure.persistence.ColorEntity;
-import com.bordify.dtos.TopicListDTO;
+import com.bordify.topic.domain.TopicListDTO;
 import com.bordify.topic.infrastructure.persistence.TopicEntity;
 import com.bordify.boards.infrastructure.persistence.models.BoardModelTestService;
 import com.bordify.persistence.models.ColorModelTestService;

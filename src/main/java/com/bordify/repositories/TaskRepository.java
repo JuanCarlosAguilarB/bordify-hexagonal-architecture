@@ -1,7 +1,7 @@
 package com.bordify.repositories;
 
+import com.bordify.domain.models.dtos.TaskListDTO;
 import com.bordify.models.Task;
-import com.bordify.dtos.TaskListDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

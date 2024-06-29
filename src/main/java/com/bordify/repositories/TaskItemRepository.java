@@ -17,7 +17,7 @@ public interface TaskItemRepository extends JpaRepository<TaskItem, UUID> {
      * @param taskId The ID of the task.
      * @return A list of task items associated with the specified task ID.
      */
-    public List<TaskItem> findByTaskId(UUID taskId);
+    public List<com.bordify.domain.models.TaskItem> findByTaskId(UUID taskId);
 
     /**
      * Deletes all task items by IDs not included in the given list.

@@ -4,7 +4,6 @@ import com.bordify.shared.domain.PaginationRequest;
 import com.bordify.topic.domain.Topic;
 import com.bordify.topic.domain.TopicListDTO;
 import com.bordify.topic.domain.TopicRepository;
-import com.bordify.topic.infrastructure.mapper.TopicMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 

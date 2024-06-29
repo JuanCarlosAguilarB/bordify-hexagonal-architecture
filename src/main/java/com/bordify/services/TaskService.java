@@ -1,6 +1,6 @@
 package com.bordify.services;
 
-import com.bordify.dtos.TaskListDTO;
+import com.bordify.domain.models.dtos.TaskListDTO;
 import com.bordify.exceptions.EntityNotFound;
 import com.bordify.models.Task;
 import com.bordify.models.TaskItem;

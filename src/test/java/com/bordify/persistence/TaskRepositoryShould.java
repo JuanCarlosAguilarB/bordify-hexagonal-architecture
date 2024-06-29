@@ -6,7 +6,6 @@ import com.bordify.board.infrastructure.persistence.BoardJpaRepository;
 import com.bordify.boards.infrastructure.persistence.models.BoardModelTestService;
 import com.bordify.color.infrastructure.persistence.ColorEntity;
 import com.bordify.color.infrastructure.persistence.ColorJpaRepository;
-import com.bordify.dtos.TaskListDTO;
 import com.bordify.models.*;
 import com.bordify.persistence.models.*;
 import com.bordify.repositories.*;

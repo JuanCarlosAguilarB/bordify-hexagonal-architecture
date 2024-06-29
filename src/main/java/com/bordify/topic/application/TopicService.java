@@ -1,11 +1,8 @@
 package com.bordify.topic.application;
 
-import com.bordify.dtos.TopicListDTO;
-import com.bordify.exceptions.EntityNotFound;
 import com.bordify.services.TaskService;
-import com.bordify.topic.infrastructure.persistence.TopicEntity;
+import com.bordify.topic.domain.TopicListDTO;
 import com.bordify.topic.infrastructure.persistence.TopicJpaRepository;
-import com.bordify.utils.UpdateFieldsOfClasses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
