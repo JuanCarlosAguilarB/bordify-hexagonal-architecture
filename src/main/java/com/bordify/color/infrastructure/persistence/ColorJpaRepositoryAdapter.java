@@ -1,6 +1,5 @@
 package com.bordify.color.infrastructure.persistence;
 
-import com.bordify.board.domain.BoardListDTO;
 import com.bordify.color.domain.Color;
 import com.bordify.color.domain.ColorRepository;
 import com.bordify.color.infrastructure.mapper.ColorMapper;
@@ -13,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
@@ -32,5 +32,12 @@ public class ColorJpaRepositoryAdapter implements ColorRepository {
 
         return new PageResult<Color>(colors,page.getNumber(), page.getSize(), page.getTotalElements());
 
+    }
+
+    @Override
+    public Optional<Color> findById(int id) {
+
+        Optional<ColorEntity> colorEntity = colorJpaRepository.findById(id);
+        return colorEntity.map(colorMapper::toDomain);
     }
 }

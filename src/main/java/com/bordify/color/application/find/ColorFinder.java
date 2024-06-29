@@ -28,4 +28,12 @@ public class ColorFinder {
 
         return colorRepository.findAll(pageable);
     }
+
+
+    public Color findColorById(int id) {
+//        return colorRepository.findById(id).orElseThrow(() -> new RuntimeException("Color not found"));
+
+        return colorRepository.findById(id).orElse(null);
+    }
+
 }
