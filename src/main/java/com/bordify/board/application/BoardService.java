@@ -26,16 +26,6 @@ public class BoardService {
     private BoardJpaRepository boardRepository;
 
 
-    /**
-     * Lists all boards for a given user.
-     *
-     * @param pageable Pagination information.
-     * @param userId  The UUID of the user whose boards to list.
-     * @return A page of {@link BoardListDTO} objects.
-     */
-    public Page<BoardListDTO> listBoards(Pageable pageable, UUID userId) {
-        return boardRepository.findByUserId(pageable, userId);
-    }
 
     /**
      * Updates an existing board.
