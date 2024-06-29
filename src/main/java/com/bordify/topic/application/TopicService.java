@@ -30,39 +30,7 @@ public class TopicService {
     @Autowired
     private TaskService taskService;
 
-    /**
-     * Updates an existing topicEntity based on the provided topicEntity object.
-     * Ensures the topicEntity exists before updating and returns the updated topicEntity.
-     *
-     * @param topicEntity The topicEntity with updated fields.
-     * @return The updated and saved topicEntity entity.
-     */
-    public TopicEntity update(TopicEntity topicEntity) {
-        ensureTopicExist(topicEntity);
 
-        TopicEntity topicEntityToUpdate = topicJpaRepository.findById(topicEntity.getId()).orElseThrow(() ->
-                new EntityNotFound("TopicEntity not found for ID " + topicEntity.getId()));
-        UpdateFieldsOfClasses.updateFields(topicEntityToUpdate, topicEntity);
-        topicJpaRepository.save(topicEntityToUpdate);
-
-        return TopicEntity.builder()
-                .id(topicEntityToUpdate.getId())
-                .name(topicEntityToUpdate.getName())
-                .colorId(topicEntityToUpdate.getColorId())
-                .boardId(topicEntityToUpdate.getBoardId())
-                .build();
-    }
-
-    /**
-     * Verifies if a topicEntity exists in the database based on its ID.
-     *
-     * @param topicEntity The topicEntity to check.
-     */
-    public void ensureTopicExist(TopicEntity topicEntity) {
-        if (!topicJpaRepository.existsById(topicEntity.getId())) {
-            throw new EntityNotFound("TopicEntity not found");
-        }
-    }
 
     /**
      * Retrieves a paginated list of topicEntities for a specified board with their related tasks.
@@ -94,12 +62,4 @@ public class TopicService {
         topicJpaRepository.deleteById(id);
     }
 
-    /**
-     * Saves a new topicEntity entity to the database.
-     *
-     * @param topicEntity The topicEntity entity to be saved.
-     */
-    public void createTopic(TopicEntity topicEntity) {
-        topicJpaRepository.save(topicEntity);
-    }
 }
