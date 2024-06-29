@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * Repository interface for accessing and managing topicEntity entities in the database.
  */
-public interface TopicRepository extends JpaRepository<TopicEntity, UUID> {
+public interface TopicJpaRepository extends JpaRepository<TopicEntity, UUID> {
 
     /**
      * Retrieves a list of topicEntity DTOs by boardEntity ID with custom projection and pagination.

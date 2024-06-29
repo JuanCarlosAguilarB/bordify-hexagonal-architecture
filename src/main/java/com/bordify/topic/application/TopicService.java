@@ -4,7 +4,7 @@ import com.bordify.dtos.TopicListDTO;
 import com.bordify.exceptions.EntityNotFound;
 import com.bordify.services.TaskService;
 import com.bordify.topic.infrastructure.persistence.TopicEntity;
-import com.bordify.topic.infrastructure.persistence.TopicRepository;
+import com.bordify.topic.infrastructure.persistence.TopicJpaRepository;
 import com.bordify.utils.UpdateFieldsOfClasses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,7 +25,7 @@ import java.util.UUID;
 public class TopicService {
 
     @Autowired
-    private TopicRepository topicRepository;
+    private TopicJpaRepository topicJpaRepository;
 
     @Autowired
     private TaskService taskService;
@@ -40,10 +40,10 @@ public class TopicService {
     public TopicEntity update(TopicEntity topicEntity) {
         ensureTopicExist(topicEntity);
 
-        TopicEntity topicEntityToUpdate = topicRepository.findById(topicEntity.getId()).orElseThrow(() ->
+        TopicEntity topicEntityToUpdate = topicJpaRepository.findById(topicEntity.getId()).orElseThrow(() ->
                 new EntityNotFound("TopicEntity not found for ID " + topicEntity.getId()));
         UpdateFieldsOfClasses.updateFields(topicEntityToUpdate, topicEntity);
-        topicRepository.save(topicEntityToUpdate);
+        topicJpaRepository.save(topicEntityToUpdate);
 
         return TopicEntity.builder()
                 .id(topicEntityToUpdate.getId())
@@ -59,7 +59,7 @@ public class TopicService {
      * @param topicEntity The topicEntity to check.
      */
     public void ensureTopicExist(TopicEntity topicEntity) {
-        if (!topicRepository.existsById(topicEntity.getId())) {
+        if (!topicJpaRepository.existsById(topicEntity.getId())) {
             throw new EntityNotFound("TopicEntity not found");
         }
     }
@@ -72,7 +72,7 @@ public class TopicService {
      * @return A page of {@link TopicListDTO} each populated with related tasks.
      */
     public Page<TopicListDTO> getTopicsOfBoard(UUID boardId, Pageable pageable) {
-        List<TopicListDTO> topics = topicRepository.findByBoardIdCustom(boardId, pageable);
+        List<TopicListDTO> topics = topicJpaRepository.findByBoardIdCustom(boardId, pageable);
         System.out.println("topicEntities: " + topics);
         int pageNumber = 0;
         int pageSize = 5;
@@ -91,7 +91,7 @@ public class TopicService {
      * @param id The UUID of the topicEntity to be deleted.
      */
     public void deleteTopic(UUID id) {
-        topicRepository.deleteById(id);
+        topicJpaRepository.deleteById(id);
     }
 
     /**
@@ -100,6 +100,6 @@ public class TopicService {
      * @param topicEntity The topicEntity entity to be saved.
      */
     public void createTopic(TopicEntity topicEntity) {
-        topicRepository.save(topicEntity);
+        topicJpaRepository.save(topicEntity);
     }
 }

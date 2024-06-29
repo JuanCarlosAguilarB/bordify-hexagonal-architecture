@@ -11,7 +11,7 @@ import com.bordify.models.*;
 import com.bordify.persistence.models.*;
 import com.bordify.repositories.*;
 import com.bordify.topic.infrastructure.persistence.TopicEntity;
-import com.bordify.topic.infrastructure.persistence.TopicRepository;
+import com.bordify.topic.infrastructure.persistence.TopicJpaRepository;
 import com.bordify.users.infrastructure.persistence.UserEntity;
 import com.bordify.users.infrastructure.persistence.UserJpaRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -38,7 +38,7 @@ public class TaskRepositoryShould {
     @Autowired
     private ColorJpaRepository colorJpaRepository;
     @Autowired
-    private TopicRepository topicRepository;
+    private TopicJpaRepository topicJpaRepository;
 
     @DisplayName("Should find task by id")
     @Test
@@ -54,7 +54,7 @@ public class TaskRepositoryShould {
         colorJpaRepository.save(colorEntityTest);
 
         TopicEntity topicEntityTest = TopicModelTestService.createValidTopic(colorEntityTest, boardEntityTest);
-        topicRepository.save(topicEntityTest);
+        topicJpaRepository.save(topicEntityTest);
 
 
         Task taskTest = TaskModelTestService.createValidTask(topicEntityTest);
@@ -81,7 +81,7 @@ public class TaskRepositoryShould {
         colorJpaRepository.save(colorEntityTest);
 
         TopicEntity topicEntityTest = TopicModelTestService.createValidTopic(colorEntityTest, boardEntityTest);
-        topicRepository.save(topicEntityTest);
+        topicJpaRepository.save(topicEntityTest);
 
         List<Task> listTaskTopic =  TaskModelTestService.createValidListTask(topicEntityTest, 5);
         taskRepository.saveAll(listTaskTopic);
