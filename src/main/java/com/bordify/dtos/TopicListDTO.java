@@ -1,7 +1,7 @@
 package com.bordify.dtos;
 
 
-import com.bordify.color.infrastructure.persistence.Color;
+import com.bordify.color.infrastructure.persistence.ColorEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -29,7 +29,7 @@ public class TopicListDTO {
     /**
      * The color associated with the topic.
      */
-    private Color color;
+    private ColorEntity colorEntity;
 
     /**
      * The list of tasks associated with the topic.
@@ -41,11 +41,11 @@ public class TopicListDTO {
      *
      * @param id The unique identifier of the topic.
      * @param name The name of the topic.
-     * @param color The color associated with the topic.
+     * @param colorEntity The colorEntity associated with the topic.
      */
-    public TopicListDTO(UUID id, String name, Color color) {
+    public TopicListDTO(UUID id, String name, ColorEntity colorEntity) {
         this.id = id;
         this.name = name;
-        this.color = color;
+        this.colorEntity = colorEntity;
     }
 }

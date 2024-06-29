@@ -1,18 +1,18 @@
 package com.bordify.persistence.models;
 
-import com.bordify.color.infrastructure.persistence.Color;
+import com.bordify.color.infrastructure.persistence.ColorEntity;
 
 public class ColorModelTestService {
 
-    public static Color createValidColor() {
+    public static ColorEntity createValidColor() {
 
         int colorId = (int) (Math.random() * 1000);
-        Color color = Color.builder()
+        ColorEntity colorEntity = ColorEntity.builder()
                 .id(colorId)
                 .name("Red")
                 .hex("#FF0000")
                 .build();
-        return color;
+        return colorEntity;
     }
 
 }

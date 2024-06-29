@@ -1,7 +1,7 @@
 package com.bordify.models;
 
 import com.bordify.board.infrastructure.persistence.BoardEntity;
-import com.bordify.color.infrastructure.persistence.Color;
+import com.bordify.color.infrastructure.persistence.ColorEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Represents a topic entity in the Bordify application. A topic is associated with a board, a color, 
+ * Represents a topic entity in the Bordify application. A topic is associated with a board, a colorEntity,
  * and can contain multiple tasks.
  * This class uses Lombok annotations to simplify the boilerplate code for getter, setter, and constructors.
  */
@@ -34,7 +34,7 @@ public class Topic {
     private String name;
 
     /**
-     * The ID of the color associated with this topic. This field is used for database operations but is
+     * The ID of the colorEntity associated with this topic. This field is used for database operations but is
      * not directly updatable or insertable through the Topic entity to prevent inconsistency.
      */
     @Column(name = "color_id")
@@ -57,13 +57,13 @@ public class Topic {
     private BoardEntity boardEntity;
 
     /**
-     * The Color entity associated with this topic. Mapped using a many-to-one relationship where each topic
-     * is associated with a single color. The @JoinColumn annotation specifies that this entity uses the
-     * 'color_id' column in the Topic table to join to the Color table.
+     * The ColorEntity entity associated with this topic. Mapped using a many-to-one relationship where each topic
+     * is associated with a single colorEntity. The @JoinColumn annotation specifies that this entity uses the
+     * 'color_id' column in the Topic table to join to the ColorEntity table.
      */
     @ManyToOne
     @JoinColumn(name = "color_id", insertable = false, updatable = false)
-    private Color color;
+    private ColorEntity colorEntity;
 
     /**
      * List of tasks associated with this topic. Defined as a one-to-many relationship with cascade
