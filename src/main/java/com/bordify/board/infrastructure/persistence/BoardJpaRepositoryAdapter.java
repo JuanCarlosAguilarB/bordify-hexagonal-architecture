@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -72,5 +73,16 @@ public class BoardJpaRepositoryAdapter implements BoardRepository {
     public void save(Board board) {
         BoardEntity  boardEntity = boardMapper.toEntity(board);
         boardRepository.save(boardEntity);
+    }
+
+    @Override
+    public Optional<Board> findById(UUID boardId) {
+        Optional<BoardEntity> boardEntity = boardRepository.findBoardEntityById(boardId);
+//        if (boardEntity.isPresent()) {
+//            return Optional.of(boardMapper.toDomain(boardEntity.get()));
+//        }
+//        return Optional.empty();
+
+        return boardEntity.map(boardMapper::toDomain);
     }
 }

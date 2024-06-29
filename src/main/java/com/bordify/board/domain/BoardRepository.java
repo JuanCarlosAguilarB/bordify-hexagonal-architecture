@@ -3,6 +3,7 @@ package com.bordify.board.domain;
 import com.bordify.shared.domain.PaginationRequest;
 import com.bordify.shared.domain.PageResult;
 
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -57,4 +58,12 @@ public interface BoardRepository {
      * @param board The board entity to save.
      */
     public void save(Board board);
+
+        /**
+     * Retrieves a board entity by its ID.
+     *
+     * @param boardId The ID of the board.
+     * @return The Optional<Board>.
+     */
+    public Optional<Board> findById(UUID boardId);
 }
