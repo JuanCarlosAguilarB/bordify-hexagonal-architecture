@@ -39,21 +39,6 @@ public class TopicController {
         return ResponseEntity.ok(taskService.getTaskOfTopic(topicId, pageable));
     }
 
-    @Operation(summary = "Create a new topicEntity", description = "Creates a new topicEntity", tags = { "TopicEntity" })
-    @PostMapping("/topics/")
-    public ResponseEntity<?> createTopic(
-            @RequestBody TopicRequest topicRequest,
-            Authentication authentication){
-
-        TopicEntity topicEntity = new TopicEntity().builder()
-                .name(topicRequest.getName())
-                .boardId(topicRequest.getBoardId())
-                .colorId(topicRequest.getColorId())
-                .build();
-
-                topicService.createTopic(topicEntity);
-        return ResponseEntity.status(HttpStatus.CREATED).body(topicEntity);
-    }
 
     /**
      * Partially updates a topicEntity.
@@ -74,32 +59,11 @@ public class TopicController {
                 .boardId(topicRequest.getBoardId())
                 .build();
 
-        TopicEntity topicEntityUpdated = topicService.update(topicEntity);
+//        TopicEntity topicEntityUpdated = topicService.update(topicEntity);
 
-        return ResponseEntity.ok(topicEntityUpdated);
+        return ResponseEntity.ok("a");
     }
 
-    /**
-     * Updates a topicEntity.
-     *
-     * @param id           The ID of the topicEntity to update.
-     * @param topicRequest The request body containing information to update the topicEntity.
-     * @return ResponseEntity with the updated topicEntity.
-     */
-    @PutMapping("/topics/{id}/")
-    public ResponseEntity update(@PathVariable UUID id, @RequestBody TopicRequest topicRequest) {
-
-        TopicEntity topicEntity = new TopicEntity().builder()
-                .id(id)
-                .name(topicRequest.getName())
-                .colorId(topicRequest.getColorId())
-                .boardId(topicRequest.getBoardId())
-                .build();
-
-        TopicEntity topicEntityUpdated = topicService.update(topicEntity);
-
-        return ResponseEntity.ok(topicEntityUpdated);
-    }
 
     /**
      * Deletes a topicEntity by its ID.

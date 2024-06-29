@@ -6,6 +6,7 @@ import com.bordify.color.application.find.ColorFinder;
 import com.bordify.color.domain.Color;
 import com.bordify.topic.application.create.TopicCreator;
 import com.bordify.topic.domain.Topic;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,7 @@ public class TopicPutController {
      * @param topicRequest The request body containing information to update the topicEntity.
      * @return ResponseEntity with the updated topicEntity.
      */
+    @Operation(summary = "Create a new topicEntity", description = "Creates a new topicEntity", tags = { "TopicEntity" })
     @PutMapping("/v1/topics/{id}/")
     public ResponseEntity update(@PathVariable UUID id, @RequestBody TopicRequest topicRequest) {
 
