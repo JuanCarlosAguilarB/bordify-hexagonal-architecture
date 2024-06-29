@@ -1,6 +1,5 @@
-package com.bordify.repositories;
+package com.bordify.topic.infrastructure.persistence;
 
-import com.bordify.models.Topic;
 import com.bordify.dtos.TopicListDTO;
 
 import org.springframework.data.domain.Pageable;

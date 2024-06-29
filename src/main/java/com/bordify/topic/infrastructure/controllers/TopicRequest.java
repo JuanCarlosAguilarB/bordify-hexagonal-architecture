@@ -1,4 +1,4 @@
-package com.bordify.controllers.topic;
+package com.bordify.topic.infrastructure.controllers;
 
 import lombok.Getter;
 import lombok.Setter;

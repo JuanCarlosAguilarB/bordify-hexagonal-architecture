@@ -1,6 +1,5 @@
-package com.bordify.domain.ports.out;
+package com.bordify.topic.domain;
 
-import com.bordify.domain.models.dtos.TopicListDTO;
 import com.bordify.shared.domain.PaginationRequest;
 
 import java.util.List;

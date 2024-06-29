@@ -1,7 +1,7 @@
 package com.bordify.persistence.models;
 
 import com.bordify.models.Task;
-import com.bordify.models.Topic;
+import com.bordify.topic.infrastructure.persistence.Topic;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.ArrayList;

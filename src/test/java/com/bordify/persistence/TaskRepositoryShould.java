@@ -10,6 +10,8 @@ import com.bordify.dtos.TaskListDTO;
 import com.bordify.models.*;
 import com.bordify.persistence.models.*;
 import com.bordify.repositories.*;
+import com.bordify.topic.infrastructure.persistence.Topic;
+import com.bordify.topic.infrastructure.persistence.TopicRepository;
 import com.bordify.users.infrastructure.persistence.UserEntity;
 import com.bordify.users.infrastructure.persistence.UserJpaRepository;
 import org.junit.jupiter.api.DisplayName;

@@ -1,8 +1,8 @@
-package com.bordify.controllers.topic;
+package com.bordify.topic.infrastructure.controllers;
 
-import com.bordify.models.Topic;
 import com.bordify.services.TaskService;
 import com.bordify.services.TopicService;
+import com.bordify.topic.infrastructure.persistence.Topic;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

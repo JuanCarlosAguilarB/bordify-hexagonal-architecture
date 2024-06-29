@@ -1,7 +1,8 @@
-package com.bordify.domain.models.dtos;
+package com.bordify.topic.domain;
 
 import com.bordify.color.domain.Color;
 
+import com.bordify.domain.models.dtos.TaskListDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

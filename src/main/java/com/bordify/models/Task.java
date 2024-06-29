@@ -1,5 +1,6 @@
 package com.bordify.models;
 
+import com.bordify.topic.infrastructure.persistence.Topic;
 import jakarta.persistence.*;
 import lombok.*;
 
