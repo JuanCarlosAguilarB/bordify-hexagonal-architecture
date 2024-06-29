@@ -24,4 +24,6 @@ public interface TopicRepository {
      * @param topic
      */
     public void save(Topic topic);
+
+    public void deleteById(UUID id);
 }

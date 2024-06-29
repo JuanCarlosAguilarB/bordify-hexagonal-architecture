@@ -29,4 +29,9 @@ public class TopicJpaAdapter implements TopicRepository {
         TopicEntity topicEntity = toEntity(topic);
         topicJpaRepository.save(topicEntity);
     }
+
+    @Override
+    public void deleteById(UUID id) {
+        topicJpaRepository.deleteById(id);
+    }
 }
