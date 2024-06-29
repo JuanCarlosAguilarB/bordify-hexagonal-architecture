@@ -1,5 +1,6 @@
 package com.bordify.board.application.find;
 
+import com.bordify.board.domain.Board;
 import com.bordify.board.domain.BoardListDTO;
 import com.bordify.board.domain.BoardRepository;
 import com.bordify.shared.domain.PageResult;
@@ -24,6 +25,10 @@ public class BoardFinder {
      */
     public PageResult<BoardListDTO> findAllBoards(PaginationRequest pageable, UUID userId) {
         return boardRepository.findByUserId(pageable, userId);
+    }
+
+    public Board findBoardById(UUID boardId) {
+        return boardRepository.findById(boardId).orElseThrow(() -> new RuntimeException("Board not found"));
     }
 
 }
