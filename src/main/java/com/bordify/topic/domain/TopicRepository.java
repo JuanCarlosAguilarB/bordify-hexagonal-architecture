@@ -18,4 +18,10 @@ public interface TopicRepository {
      * @return A list of topic DTOs associated with the specified boardEntity ID.
      */
     List<TopicListDTO> findByBoardIdCustom(UUID boardId, PaginationRequest pageable);
+
+    /**
+     * Saves a topic entity to the database.
+     * @param topic
+     */
+    public void save(Topic topic);
 }
