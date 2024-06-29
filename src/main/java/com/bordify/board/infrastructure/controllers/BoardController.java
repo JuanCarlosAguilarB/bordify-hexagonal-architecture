@@ -42,52 +42,6 @@ public class BoardController {
 
 
 
-
-
-
-    /**
-     * Get all topics of a board.
-     *
-     * @param boardId The id of the board to retrieve topics for.
-     * @param pageable The pagination information.
-     * @param auth The authentication object containing information about the authenticated user.
-     * @return A ResponseEntity with the topics of the board.
-     */
-    @Operation(summary = "Get all topics of a board",
-            description = "Lists all topics of a board for a given board",
-            tags = { "Board" })
-    @GetMapping("/boards/{boardId}/topics/")
-    public ResponseEntity<?> getTopicsOfBoard(
-            @PathVariable UUID boardId,
-            Pageable pageable,
-            Authentication auth) {
-
-
-        // verify that owner of the board is the one requesting the topics
-        String username = auth.getName();
-        User user = userFinder.findUserByUsername(username);
-
-        boolean isUserOwnerOfBoard = boardService.isUserOwnerOfBoard(boardId, user.getId());
-
-        if (!isUserOwnerOfBoard){
-
-            ApiExceptionResponse response = ApiExceptionResponse.builder()
-                    .status(HttpStatus.FORBIDDEN.value())
-                    .error(HttpStatus.FORBIDDEN.getReasonPhrase())
-                    .message("User is not the owner of the board")
-                    .build();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
-        }
-
-        Page<TopicListDTO> topics = topicService.getTopicsOfBoard(boardId, pageable);
-
-
-
-        return ResponseEntity.ok(topics);
-    }
-
-
-
     /**
      * Handle a partial update of a board.
      *
