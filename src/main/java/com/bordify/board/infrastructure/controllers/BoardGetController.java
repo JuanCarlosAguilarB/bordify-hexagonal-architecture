@@ -4,7 +4,7 @@ import com.bordify.board.application.find.BoardFinder;
 import com.bordify.board.domain.Board;
 import com.bordify.dtos.TopicListDTO;
 import com.bordify.exceptions.ApiExceptionResponse;
-import com.bordify.services.TopicService;
+import com.bordify.topic.application.TopicService;
 import com.bordify.shared.domain.PaginationRequest;
 import com.bordify.users.application.find.UserFinder;
 import com.bordify.users.domain.User;

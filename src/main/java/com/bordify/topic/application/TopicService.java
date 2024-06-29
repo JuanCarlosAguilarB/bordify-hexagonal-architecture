@@ -1,7 +1,8 @@
-package com.bordify.services;
+package com.bordify.topic.application;
 
 import com.bordify.dtos.TopicListDTO;
 import com.bordify.exceptions.EntityNotFound;
+import com.bordify.services.TaskService;
 import com.bordify.topic.infrastructure.persistence.Topic;
 import com.bordify.topic.infrastructure.persistence.TopicRepository;
 import com.bordify.utils.UpdateFieldsOfClasses;
