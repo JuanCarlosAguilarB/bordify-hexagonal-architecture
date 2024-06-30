@@ -1,10 +1,14 @@
-package com.bordify.configuration.infrastructure;
+package com.bordify.auth.infrastructure.security;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
-import com.bordify.auth.application.JwtService;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bordify.configuration.infrastructure.ApiResponseHelper;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,21 +24,17 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 
 /**
  * Filter class responsible for JWT authentication.
  * Validates JWT tokens from incoming requests and sets the authentication context if valid.
  */
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 
     private final UserDetailsService userDetailsService;
-
-    @Autowired
-    private final JwtService jwtService;
 
     /**
      * Performs the JWT token validation and sets the authentication context if valid.
@@ -46,8 +46,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      * @throws IOException If an I/O error occurs during the filter execution.
      */
     @Override
-    protected void doFilterInternal(
-            HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
         final String token = getTokenFromRequest(request);
@@ -59,7 +58,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
 
         }
-        username = jwtService.getUsernameFromToken(token);
+        username = getUsernameFromToken(token);
+
         if (username == null) {
             ApiResponseHelper.sendErrorResponse(response, HttpStatus.BAD_REQUEST, "Bad Request", "El token is not valid");
             return;
@@ -68,7 +68,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-            if (jwtService.isValidToken(token, userDetails)) {
+            if (isValidToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
                         null,
@@ -101,6 +101,38 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return authHeader.substring(7);
         }
         return null;
+    }
+
+    /**
+     * Extracts the username from the provided JWT token.
+     *
+     * @param token The JWT token from which to extract the username.
+     * @return The username extracted from the token.
+     */
+    public String getUsernameFromToken(String token) {
+        DecodedJWT decodedJWT = JWT.decode(token);
+        return decodedJWT.getSubject();
+    }
+
+    /**
+     * Validates whether the provided JWT token is valid for the given user details.
+     *
+     * @param token The JWT token to validate.
+     * @param userDetails The user details against which to validate the token.
+     * @return True if the token is valid for the given user details, false otherwise.
+     */
+    public Boolean isValidToken(String token, UserDetails userDetails) {
+        try {
+            DecodedJWT decodedJWT = JWT.decode(token);
+
+            LocalDate now = LocalDate.now();
+
+            return !decodedJWT.getExpiresAt().before(java.sql.Date.valueOf(now)) ||
+                    decodedJWT.getSubject().equals(userDetails.getUsername());
+
+        } catch (JWTDecodeException exception) {
+            return false;
+        }
     }
 }
 
