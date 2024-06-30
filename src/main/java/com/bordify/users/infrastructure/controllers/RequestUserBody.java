@@ -1,6 +1,6 @@
 package com.bordify.users.infrastructure.controllers;
 
-import com.bordify.configuration.infrastructure.InvalidRequestArgumentException;
+import com.bordify.shared.domain.InvalidRequestArgumentException;
 import com.bordify.utils.EmailValidator;
 import lombok.Builder;
 import lombok.Getter;

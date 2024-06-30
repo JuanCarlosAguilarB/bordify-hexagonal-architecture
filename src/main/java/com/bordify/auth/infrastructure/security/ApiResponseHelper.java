@@ -1,4 +1,4 @@
-package com.bordify.configuration.infrastructure;
+package com.bordify.auth.infrastructure.security;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;

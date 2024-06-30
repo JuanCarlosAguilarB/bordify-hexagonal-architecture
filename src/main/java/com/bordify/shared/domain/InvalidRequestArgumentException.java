@@ -1,4 +1,4 @@
-package com.bordify.configuration.infrastructure;
+package com.bordify.shared.domain;
 
 
 /**

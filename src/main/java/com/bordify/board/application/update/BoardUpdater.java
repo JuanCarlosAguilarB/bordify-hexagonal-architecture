@@ -2,7 +2,7 @@ package com.bordify.board.application.update;
 
 import com.bordify.board.domain.Board;
 import com.bordify.board.domain.BoardRepository;
-import com.bordify.configuration.infrastructure.EntityNotFound;
+import com.bordify.shared.domain.EntityNotFound;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
