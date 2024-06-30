@@ -1,15 +1,10 @@
 package com.bordify.topic.infrastructure.controllers;
 
 import com.bordify.services.TaskService;
-import com.bordify.topic.application.TopicService;
 import com.bordify.topic.infrastructure.persistence.TopicEntity;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -22,22 +17,8 @@ import java.util.UUID;
 public class TopicController {
 
     @Autowired
-    private TopicService topicService;
-
-    @Autowired
     private TaskService taskService;
 
-    /**
-     * Retrieves tasks associated with a topicEntity.
-     *
-     * @param topicId  The ID of the topicEntity.
-     * @param pageable Pagination information.
-     * @return ResponseEntity with tasks of the specified topicEntity.
-     */
-    @GetMapping("/topic/{topicId}/tasks/")
-    public ResponseEntity<?> getTaskOfTopic(@PathVariable UUID topicId, Pageable pageable) {
-        return ResponseEntity.ok(taskService.getTaskOfTopic(topicId, pageable));
-    }
 
 
     /**

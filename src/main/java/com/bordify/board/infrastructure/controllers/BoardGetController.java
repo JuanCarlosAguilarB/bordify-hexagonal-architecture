@@ -3,8 +3,8 @@ package com.bordify.board.infrastructure.controllers;
 import com.bordify.board.application.find.BoardFinder;
 import com.bordify.board.domain.Board;
 import com.bordify.exceptions.ApiExceptionResponse;
-import com.bordify.topic.application.TopicService;
 import com.bordify.shared.domain.PaginationRequest;
+import com.bordify.topic.application.find.TopicFinder;
 import com.bordify.topic.domain.TopicListDTO;
 import com.bordify.users.application.find.UserFinder;
 import com.bordify.users.domain.User;
@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -29,7 +31,8 @@ public class BoardGetController {
 
     private final BoardFinder boardFinder;
     private final UserFinder userFinder;
-    private final TopicService topicService;
+    private final TopicFinder  topicFinder;
+
 
     /**
      * List all boards.
@@ -85,10 +88,11 @@ public class BoardGetController {
                     .build();
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
         }
+        PaginationRequest  paginationRequest = new PaginationRequest(pageable.getPageNumber(), pageable.getPageSize());
 
-        Page<TopicListDTO> topics = topicService.getTopicsOfBoard(boardId, pageable);
-
-        return ResponseEntity.ok(topics);
+        List<TopicListDTO> topics = topicFinder.getTopicsOfBoard(boardId, paginationRequest);
+        Page<TopicListDTO> topicPaginated = new PageImpl<>(topics, pageable, topics.size());
+        return ResponseEntity.ok(topicPaginated);
     }
 
 }
