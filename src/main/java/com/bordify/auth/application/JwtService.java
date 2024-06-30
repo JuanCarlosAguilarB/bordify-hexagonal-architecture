@@ -20,49 +20,6 @@ public class JwtService {
     private final LocalDate now = LocalDate.now();
     final Algorithm algorithm = Algorithm.HMAC256(this.secret);
 
-    /**
-     * Generates a JWT access token with the specified expiration and username.
-     *
-     * @param expirationInDays The expiration duration of the token in days.
-     * @param username The username associated with the token.
-     * @return The generated JWT access token.
-     */
-    public String generateToken(int expirationInDays, String username) {
-
-        LocalDate expiryDate = now.plusDays(expirationInDays);
-        return JWT.create()
-                .withSubject(username)
-                .withIssuedAt(java.sql.Timestamp.valueOf(now.atStartOfDay()))
-                .withExpiresAt(java.sql.Timestamp.valueOf(expiryDate.atStartOfDay()))
-                .sign(algorithm);
-    }
-
-
-    /**
-     * Generates an access token with a default expiration period and the specified username.
-     *
-     * @param username The username associated with the token.
-     * @return The generated access token.
-     */
-    public String getAccessToken(String username) {
-
-        //    @Value("${jwt.accessTokenExpirationInDays:10}")
-        int accessTokenExpirationInDays = 1000;
-        return generateToken(accessTokenExpirationInDays, username);
-    }
-
-    /**
-     * Generates a refresh token with a default expiration period and the specified username.
-     *
-     * @param username The username associated with the token.
-     * @return The generated refresh token.
-     */
-    public String getRefreshToken(String username) {
-
-        //    @Value("${jwt.refreshTokenExpirationInDays:11}")
-        int refreshTokenExpirationInDays = 1100;
-        return generateToken(refreshTokenExpirationInDays, username);
-    }
 
     /**
      * Extracts the username from the provided JWT token.
