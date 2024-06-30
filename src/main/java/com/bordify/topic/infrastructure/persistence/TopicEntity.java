@@ -20,6 +20,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "topic")
 public class TopicEntity {
 
     /**

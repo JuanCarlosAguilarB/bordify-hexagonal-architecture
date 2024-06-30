@@ -13,7 +13,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "colorEntity")
+@Table(name = "color")
 public class ColorEntity {
 
     /**
