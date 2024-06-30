@@ -2,7 +2,7 @@ package com.bordify.config;
 
 import java.io.IOException;
 
-import com.bordify.services.JwtService;
+import com.bordify.auth.application.JwtService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

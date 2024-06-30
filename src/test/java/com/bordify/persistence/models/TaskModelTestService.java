@@ -1,6 +1,6 @@
 package com.bordify.persistence.models;
 
-import com.bordify.models.Task;
+import com.bordify.task.infrastructure.persistence.Task;
 import com.bordify.topic.infrastructure.persistence.TopicEntity;
 import org.apache.commons.lang3.RandomStringUtils;
 
