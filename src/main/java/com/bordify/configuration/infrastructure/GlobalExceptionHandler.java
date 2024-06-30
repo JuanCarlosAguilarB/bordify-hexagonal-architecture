@@ -1,7 +1,7 @@
 package com.bordify.configuration.infrastructure;
 
 
-import com.bordify.auth.domain.JwtTokenException;
+import com.bordify.auth.domain.TokenException;
 import com.bordify.users.domain.DuplicateEmailException;
 import com.bordify.users.domain.UserNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -102,15 +102,15 @@ public class GlobalExceptionHandler  {
     }
 
     /**
-     * Handles JwtTokenException.
+     * Handles TokenException.
      *
-     * @param ex The JwtTokenException object.
+     * @param ex The TokenException object.
      * @return ApiExceptionResponse containing details of the exception.
      */
-    @ExceptionHandler(JwtTokenException.class)
+    @ExceptionHandler(TokenException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
-    public ApiExceptionResponse handleJwtTokenException(JwtTokenException ex) {
+    public ApiExceptionResponse handleJwtTokenException(TokenException ex) {
         return new ApiExceptionResponse.ApiExceptionResponseBuilder()
                 .status(HttpStatus.UNAUTHORIZED.value())
                 .error(HttpStatus.UNAUTHORIZED.getReasonPhrase())
