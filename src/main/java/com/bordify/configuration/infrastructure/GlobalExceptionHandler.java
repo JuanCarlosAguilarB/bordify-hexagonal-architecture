@@ -1,6 +1,7 @@
-package com.bordify.exceptions;
+package com.bordify.configuration.infrastructure;
 
 
+import com.bordify.auth.domain.JwtTokenException;
 import com.bordify.users.domain.DuplicateEmailException;
 import com.bordify.users.domain.UserNotFoundException;
 import org.springframework.http.HttpStatus;

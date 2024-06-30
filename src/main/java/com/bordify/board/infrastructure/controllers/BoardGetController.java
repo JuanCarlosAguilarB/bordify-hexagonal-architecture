@@ -2,7 +2,7 @@ package com.bordify.board.infrastructure.controllers;
 
 import com.bordify.board.application.find.BoardFinder;
 import com.bordify.board.domain.Board;
-import com.bordify.exceptions.ApiExceptionResponse;
+import com.bordify.configuration.infrastructure.ApiExceptionResponse;
 import com.bordify.shared.domain.PaginationRequest;
 import com.bordify.topic.application.find.TopicFinder;
 import com.bordify.topic.domain.TopicListDTO;

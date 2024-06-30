@@ -1,7 +1,7 @@
 package com.bordify.task.infrastructure.controllers;
 
 import com.bordify.task.domain.TaskListDTO;
-import com.bordify.exceptions.EntityNotFound;
+import com.bordify.configuration.infrastructure.EntityNotFound;
 import com.bordify.task.infrastructure.persistence.Task;
 import com.bordify.task_item.infrastructure.persistence.TaskItem;
 import com.bordify.task_item.infrastructure.persistence.TaskItemRepository;

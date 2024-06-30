@@ -1,7 +1,7 @@
 package com.bordify.board.application.delete;
 
 import com.bordify.board.domain.BoardRepository;
-import com.bordify.exceptions.EntityNotFound;
+import com.bordify.configuration.infrastructure.EntityNotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;

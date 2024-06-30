@@ -1,4 +1,4 @@
-package com.bordify.config;
+package com.bordify.configuration.infrastructure;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.bordify.config;
+package com.bordify.configuration.infrastructure;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.bordify.config;
+package com.bordify.configuration.infrastructure;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

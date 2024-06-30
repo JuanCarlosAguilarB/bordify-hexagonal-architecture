@@ -1,6 +1,5 @@
-package com.bordify.config;
+package com.bordify.configuration.infrastructure;
 
-import com.bordify.users.domain.User;
 import com.bordify.users.infrastructure.persistence.UserEntity;
 import com.bordify.users.infrastructure.ports.out.UserRepository;
 import com.bordify.users.domain.UserNotFoundException;
@@ -20,7 +19,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.Collections;
-import java.util.Optional;
 
 /**
  * Configuration class for application-wide configurations.

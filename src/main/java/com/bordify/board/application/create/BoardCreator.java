@@ -2,7 +2,7 @@ package com.bordify.board.application.create;
 
 import com.bordify.board.domain.Board;
 import com.bordify.board.domain.BoardRepository;
-import com.bordify.exceptions.ResourceNotCreatedException;
+import com.bordify.configuration.infrastructure.ResourceNotCreatedException;
 import org.springframework.stereotype.Service;
 
 @Service
