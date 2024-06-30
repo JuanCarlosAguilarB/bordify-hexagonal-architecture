@@ -26,7 +26,7 @@ public class TopicPatchController {
      * @param topicRequest  The request body containing partial information to update the topicEntity.
      * @return ResponseEntity with the updated topicEntity.
      */
-    @PatchMapping("/topics/{id}/")
+    @PatchMapping("/v1/topics/{id}/")
     public ResponseEntity<?> partialUpdate(
         @PathVariable UUID id,
          @RequestBody Map<String, Object> topicRequest) {
