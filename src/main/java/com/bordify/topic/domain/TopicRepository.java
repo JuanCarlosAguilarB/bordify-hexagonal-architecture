@@ -3,6 +3,7 @@ package com.bordify.topic.domain;
 import com.bordify.shared.domain.PaginationRequest;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -26,4 +27,6 @@ public interface TopicRepository {
     public void save(Topic topic);
 
     public void deleteById(UUID id);
+
+    public Optional<Topic> findById(UUID id);
 }
